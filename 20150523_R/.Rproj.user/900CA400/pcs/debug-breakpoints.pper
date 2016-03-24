@@ -1,0 +1,21 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 163,
+                "editor_state" : 2,
+                "function_name" : "theme_null",
+                "function_steps" : "",
+                "id" : 0,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 163,
+                "needs_updated_steps" : false,
+                "package_name" : "",
+                "path" : "~/R/20150523_R/20150523_Week12_ploting.R",
+                "state" : 2,
+                "type" : 0
+            }
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "data1 <- read.csv(\"./sample/2013년_서울_주요구별_병원현황.csv\", header=T)\ndir(\"./sample\")\nhead(data1)\n\nv1 <- data1[1:9,2]*0.1 # 강남\nv2 <- data1[1:9,3]*0.1 # 강동\nv3 <- data1[1:9,4]*0.1 #강서\nv4 <- data1[1:9,5]*0.1 #관악\nv5 <- data1[1:9,6]*0.1 #구로\nv6 <- data1[1:9,7]*0.1 #도봉\nv7 <- data1[1:9,8]*0.1 #동대문\nv8 <- data1[1:9,9]*0.1 #동작\nv9 <- data1[1:9,10]*0.1 #마포\nv10 <- data1[1:9,11]*0.1 #서대문\n\npar(mfrow=c(2,5))\nname <- data1$표시과목\nname\n\ngraphOut <- function (data, mainTitle) {\n  gangnam <-barplot(as.matrix(data), main=mainTitle, beside=T,axes=F, ylab=\"병원수(단위10개)\", xlab=\"\", cex.names=0.85, las=2, ylim=c(0,40), col=rainbow(8), border=\"white\", names.arg=name)\n  \n  axis(2,ylim=seq(0,25,10))\n  abline(h=seq(0,35,5), lty=2)\n}\n\ngraphOut(v1, \"강남구 병원현황\")\ngraphOut(v2, \"강동구 병원현황\")\ngraphOut(v3, \"강서구 병원현황\")\ngraphOut(v4, \"관악구 병원현황\")\ngraphOut(v5, \"구로구 병원현황\")\ngraphOut(v6, \"도봉구 병원현황\")\ngraphOut(v7, \"동대문구 병원현황\")\ngraphOut(v8, \"동작구 병원현황\")\ngraphOut(v9, \"마포구 병원현황\")\ngraphOut(v10, \"서대문구 병원현황\")\n#\n",
+    "created" : 1432532236352.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2279408688",
+    "id" : "F7529568",
+    "lastKnownWriteTime" : 1432535459,
+    "path" : "~/Rrepo/Rlov/fixedData/GooGraph.R",
+    "project_path" : "GooGraph.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

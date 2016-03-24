@@ -1,0 +1,18 @@
+{
+    "contents" : "install.packages(\"Rfacebook\")\ninstall.packages(\"Rook\")\nlibrary(Rfacebook)\nlibrary(Rook)\nlibrary(RCurl)\nlibrary(tm)\nfb_oauth <- fbOAuth(app_id=\"1663246310561944\", app_secret=\"3471fdded9368f291df5ccb99eef582d\",extended_permissions = FALSE)\n\noptions(RCurlOptions = list(capath = system.file(\"CurlSSL\", \"cacert.pem\", package = \"RCurl\"), ssl.verifypeer = FALSE)) \n\nFQLQuery.facebook <- function(script=\"\",access_token, path) {\n  \n  fromJSON(getURL(sprintf( \"https://graph.facebook.com/%s?%s&access_token=%s\", path, script, access_token)))\n  # print(sprintf( \"https://graph.facebook.com/%s?%s&access_token=%s\", path, script, access_token))\n}\n\nkeyword <- \"iPhone\"\npath <- enc2utf8(keyword)\n\naccess_token = \"CAACEdEose0cBAB1BWWZBkrfVQkH6JurRGsS8LF0z3uocfKZCX3eFOZABHZA3LXaamrhHes6GqjXViXZB3oJ5tkoi7SZCSDdpbFeiGXM2PU85KyDrcJn1lJePtPPtKQsOG0ZCJZCac5pbzY1jrGKEOyoCpG9xKN9ZCYrZAkzVvM0ZCTTbZBiHrLPp6VWMy0TFZAiQ6LQjfJxasqmlRZBgqm0EQH6BZB7dTh4ifRRcRsZD\"\nmyposts <- FQLQuery.facebook(\"fields=posts.fields(message,likes)&limit=100&offset=0\", access_token, path)\n\nhead(myposts)\n\n?strsplit\n\npost.id  <- sapply(myposts$posts$data, function(x) x$id)\npost.messages <- sapply(myposts$posts$data, function(x) x$message)\n# post.likes <- sapply(myposts$posts$data, function(x) x$likes$count)\n# post.createdtime <- sapply(myposts$post$data, function(x) x$created_time)\n\n# 문자열 정리\n\npost.messages <- gsub(\"\\n\",\"\",post.messages)\npost.messages <- gsub(\"\\r\",\"\",post.messages)\npost.messages <- removePunctuation(post.messages)\nresult <- data.frame(post.id = post.id,message = post.messages)\n\nhead(result)\n\nlibrary(KoNLP)\nlibrary(wordcloud)\n\nwordcloud2 <- function (data, min.count, pal) {\n\n  # text mining을 위한 형태로 정제\n  data.dt <- data\n  data.dt <- gsub(\"\\n\",\"\",data.dt)\n  data.dt <- gsub(\"\\r\",\"\",data.dt)\n  data.dt <- gsub(\"RT\",\"\",data.dt)\n\n  # 명사 분리\n  result_nouns <- Map(extractNoun,data.dt)\n  result_word <- unlist(result_nouns,use.name=F)\n\n  # 글자수가 2 이상인 것만 남김\n  result_word <- Filter(function(x) { nchar(x) >=2 }, result_word)\n  \n  # 글자수가 과도하게 긴 것은 제외\n  result_word <- Filter(function(x) { nchar(x) <=10 }, result_word)\n\n  # 문자 Counting\n  result_word.count <- table(result_word)\n  # 일정 Count 이상 되는 것으로 제한\n  result_word.count <- result_word.count[result_word.count >= min.count]\n  # 폰트 세팅\n  windowsFonts(malgun=windowsFont(\"맑은 고딕\"))  \n  # Wordcloud\n  wordcloud(names(result_word.count), \n            freq=result_word.count, \n            scale=c(5,.5), min.freq=5, random.order=F, family=\"malgun\", colors=pal)\n  \n}\n\n\npal <- brewer.pal(12, \"Paired\")\nwordcloud2(result[,'message'], 2,pal)\n",
+    "created" : 1436582589591.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3420984906",
+    "id" : "212A4595",
+    "lastKnownWriteTime" : 1437194804,
+    "path" : "C:/RCodeRepositories/RSpclecture3/facebook.R",
+    "project_path" : "facebook.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

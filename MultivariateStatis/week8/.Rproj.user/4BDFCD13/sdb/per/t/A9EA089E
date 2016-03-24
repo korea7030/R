@@ -1,0 +1,17 @@
+{
+    "contents" : "# 클러스터링을 하기 전에 꼭 scale을 해야한다. 특정 변수의 값에 의해 영향을 많이 받을 수 있으므로....\n\nx=c(1,3,6,12,20)\ndist(x)\n\n# 최단 연결법\nhc1 = hclust(dist(x), method=\"single\")\nhc1\nplot(hc1)\ncutree(hc1, 3)\n\n# 최장 연결법\nhc2 = hclust(dist(x), method=\"complete\")\nplot(hc2)\n\n# 평균 연결법\nhc3 = hclust(dist(x), method=\"average\")\nplot(hc3)\n\n\n## USArrests\nUSArrests\nhc5 = hclust(dist(scale(USArrests)), method=\"single\")\nplot(hc5)\n\nhc6 = hclust(dist(scale(USArrests)), method=\"complete\")\nplot(hc6)\nclass6 = cutree(hc6, 4)\nsUS = as.data.frame(scale(USArrests))\nattach(sUS)\nplot(Murder, Assault, col=class6, pch=class6, type=\"no\")\ntext(Murder, Assault, col=class6, pch=class6, labels=rownames(USArrests))\n\n\n# 주성분 분석으로 변수를 그룹화하여 군집분석하기\npc1 = prcomp(USArrests, scale=T)\nplot(pc1$x[,1], pc1$x[,2], type=\"n\")\ntext(pc1$x[,1], pc1$x[,2], labels=rownames(USArrests), col=class6, pch=class6)\n\n# 각 그룹의 특징(요약통계량)\nlibrary(psych)\ndescribeBy(USArrests, group=class6)\ndescribeBy(sUS, group=class6)\n\n# 상자그림\nsUS$class = class6\npar(mfcol=c(2,2))\nboxplot(Murder~class, sUS, main=\"Murder\")\nboxplot(Rape~class, sUS, main=\"Rape\")\nboxplot(Assault~class, sUS, main=\"Assault\")\nboxplot(UrbanPop~class, sUS, main=\"UrbanPop\")\n\n\n# HW4\n# 22개 미국 전투기에 대한 6개 변수값이 jet.csv에 저장되어 있다. 각 변수는 아래와 같다.\n# -\tFFD: 처음 비행 날짜\n# -\tSPR: 단위무게 당 출력에 비례하는 특정한 출력\n# -\tRGF: 비행범위 요인\n# -\tPLF: 비행기의 총 무게의 일부분으로서의 탑재량\n# -\tSLF: 일관된 무게 요인\n# -\tCAR: 비행기가 항공모함에 착륙 가능여부\n# 1.\t계층적군집분석\n# A.\tFFD와 CAR를 제외한 변수를 표준화(scale) 한 후 최장연결법을 사용해 비계층적 군집화를 시행하고 덴드로그램을 그리시오.\njet_csv = read.csv(\"jet.csv\")\nhead(jet_csv)\nsummary(jet_csv)\njet_csv[,1]\nrow.names(jet_csv) = jet_csv[,1]\njet_csv = jet_csv[,-1]\njet = jet_csv[,-c(1,6)]\njet\nhc = hclust(dist(scale(jet)), method=\"complete\")\nplot(hc)\n",
+    "created" : 1446432417342.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1410406843",
+    "id" : "A9EA089E",
+    "lastKnownWriteTime" : 1446432405,
+    "path" : "C:/MultivariateStatis/week8/R08.R",
+    "project_path" : "R08.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

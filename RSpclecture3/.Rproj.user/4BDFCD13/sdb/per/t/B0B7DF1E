@@ -1,0 +1,18 @@
+{
+    "contents" : "rm(list=ls())\ninstall.packages(\"ROAuth\")\ninstall.packages(\"twitteR\")\ninstall.packages(\"tm\")\ninstall.packages(\"Unicode\")\ninstall.packages(\"RCurl\")\ninstall.packages(\"KoNLP\")\ninstall.packages(\"wordcloud\")\ninstall.packages(\"plyr\")\ninstall.packages(\"httr\")\n\nlibrary(ROAuth)\nlibrary(RCurl)\nlibrary(KoNLP)\nlibrary(wordcloud)\nlibrary(plyr)\nlibrary(twitteR)\nlibrary(tm)\nlibrary(Unicode)\nlibrary(httr)\n\nconsumerKey <- \"Rbu80S62tnZKVPuGJE3CKkP8A\"\nconsumerSecret <- \"CB62bN1KanhXSuOP1ruAtSFIVKn5owg7XJc763RFmbMAX1obwe\"\nrequest <- \"https://api.twitter.com/oauth/request_token\"\naccess <- \"https://api.twitter.com/oauth/access_token\"\nauthorize <- \"https://api.twitter.com/oauth/authorize\"\naccess_token <- \"183506593-souNoesasolvZUDYIJ8QkI9gjt0Va8ISKzT9tw1Y\"\naccess_tokensec <- \"4pkb709ybWtVaMX5qPGmpDeIddjCv3GpJtUbuzJFHkPP5\"\n\n## twitter 권한 설정\nsetup_twitter_oauth(consumerKey, consumerSecret, access_token, access_tokensec)\n\nkeyword <- enc2utf8(\"등산화\")\n# 1. keyword에 대한 검색결과 받기\nresult <- searchTwitter(keyword, n=2000, lang=\"ko\")\n\nresult\n\n# 2.결과중 텍스트에 해당하는 부분만 뽑기 \n?twListToDF\n## 2.1 dataframe으로 변경  \nresult.df <- twListToDF(result)\nresult.df\n\n## 2.2 변경한 dataframe에서 text만 뽑아\nresult.text <- result.df$text\nresult.text\n\n# 3.불필요한 문자 제거\nresult.text <- gsub('\\n', '', result.text)\nresult.text <- gsub('\\r', '', result.text)\nresult.text <- gsub('RT', '', result.text)\nresult.text <- gsub('http', '', result.text)\n\n# 4.문자 분리\n?Map\n## 명사 형태의 문자만 분리 \nresult_nouns <- Map(extractNoun, result.text)\n\n# 5.쓸모없는 문자 제거 \n?stopwords\n## 5.1 list로 되어있는 nouns를 list해제 \nresult_wordsvec <- unlist(result_nouns,use.name=F)\n## 5.2 english인 문자를 제외\nresult_wordsvec <- result_wordsvec[-which(result_wordsvec %in% stopwords(\"english\"))]\n## 5.3 punctuation (구두점) 제거 \nresult_wordsvec <- gsub('[[:punct:]]','', result_wordsvec)\n## 5.4 두글자 이상인 것만  뽑기\nresult_wordsvec <- Filter(function(x) { nchar(x) >= 2}, result_wordsvec)\n\n# 6. 문자 카운팅\nresult_wordcount <- table(result_wordsvec)\n\n# 7. 색깔 세팅 \npal <- brewer.pal(12,'Paired')\n\n# 8. font 세팅\nwindowsFonts(malgun=windowsFont('맑은 고딕'))\n\nresult_wordcount\n# 9. wordcloud\nwordcloud(names(result_wordcount), freq=result_wordcount, scale=c(5,0,10), min.freq=5, random.order=F, rot.per=.1, colors=pal, family='malgun')\n\nvignette(package=\"twitteR\")\n\nexample(\"vignette\")\n?vignette\n",
+    "created" : 1436444495800.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "334749133",
+    "id" : "B0B7DF1E",
+    "lastKnownWriteTime" : 1437194804,
+    "path" : "C:/RCodeRepositories/RSpclecture3/twitter.R",
+    "project_path" : "twitter.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,263 @@
+
+# midTerm Quiz Review
+
+
+0. 이 데이터는 가상으로 작성한 우리나라를 방문한 관광객의 해외 로밍통화 log
+   (call data record 라고도 합니다) 데이터 입니다.
+   
+   - 데이터의 한행은 통화나 SMS가 한통화 수신 혹은 발신되었음을 의미합니다.
+   - 고객 1명이 여러번의 통화를 발신 혹은 수신한 경우, 여러개의 통화레코드가 남을 수 있습니다.
+   
+```{r}
+# install.packages("dplyr")
+library(dplyr)
+# install.packages("data.table")
+library(data.table)
+# install.packages("sqldf")
+library(sqldf)
+```
+
+
+
+1. R-Studio에서 "midterm" 프로젝트를 생성하고,
+   trainData.csv파일을 프로젝트 폴더 하위에 data 서브디렉토리를 만들고,
+   그 서브디렉토리에 저장하시오.
+   
+2. 가장 통화량이 많은 관광객 상위 5명의 touristID는?
+   
+```{r}
+system.time(
+trainData <- read.csv("./data/trainData.csv", header=T, stringsAsFactors=F)
+)
+
+system.time(
+uniqIdAggr <- aggregate(trainData$dateChar,
+                        list(uniqId=trainData$touristID),
+                        FUN=length)
+)
+
+system.time(
+order <- order(uniqIdAggr$x, decreasing=T)
+)
+head(uniqIdAggr[order,])
+```
+
+```{r dplyr version}
+start.time <- Sys.time()
+  uniqId.groupby <- group_by(trainData, touristID)
+  uniqId.summarize <- summarize(uniqId.groupby, N=n())
+  head(uniqId.summarize)
+  uniqId.arrange <- arrange(uniqId.summarize, desc(N))
+  head(uniqId.arrange)
+end.time <- Sys.time()
+(duration <- end.time - start.time)
+```
+
+
+```{r data.table version}
+head(trainData)
+
+start.time <- Sys.time()
+  trainData.dt <- data.table(trainData)
+  head(trainData.dt)
+  setkey(trainData.dt, touristID, nation, city)
+
+  uniqId.dt <- trainData.dt[, .N, by=list(touristID) ]
+  head(uniqId.dt)
+
+  setorder(uniqId.dt, -N)
+
+  head(uniqId.dt)
+
+end.time <- Sys.time()
+(duration <- end.time - start.time)
+```
+
+
+
+3. 우리나라를 가장 많이 방문한 나라의 이름은?
+   1등 방문객수 국가와 2등 방문객수 국가의 방문객수 차이는 얼마인가요?
+   
+   주) 통화콜 수가 아니라 방문객수라는 점에 유의하시기 바랍니다.
+
+```{r}
+system.time(
+idNationAggr <- aggregate(trainData$dateChar,
+                        list(uniqId=trainData$touristID,
+                             nation=trainData$nation),
+                        FUN=length)
+)
+head(idNationAggr)
+table(idNationAggr$nation)
+head(idNationAggr[order(idNationAggr$x, decreasing=T),],20)
+
+
+system.time(
+nationXAggr <- aggregate(idNationAggr$x,
+                        list(nation=idNationAggr$nation),
+                        FUN=sum)
+)
+nationXAggr[order(nationXAggr$x, decreasing=T),]
+```
+
+
+4. 해외여행객들의 통화건수가 가장 많은 요일은 무슨 요일 입니까?
+
+```{r}
+head(trainData)
+str(trainData)
+head(paste0(trainData$dateChar," ", trainData$timeChar))
+
+trainData$timestamp <- strptime(paste0(trainData$dateChar," ", trainData$timeChar),
+                                format="%Y/%m%d %H%M-%S")
+trainData$wday <- trainData$timestamp$wday
+trainData$hour <- trainData$timestamp$hour
+trainData$wday <- factor(trainData$wday, levels=c(1:6,0),
+                         ordered=T,
+                         labels=c("월","화","수","목","금","토","일"))
+
+tail(trainData)
+trainData$count <- 1
+
+system.time(
+wdayAggr <- aggregate(trainData$timestamp,
+                        list(wday=trainData$wday),
+                        FUN=length)
+)
+
+wdayAggr
+```
+
+5. 해외여행객들의 통화건수가 가장 많은 시간대는 어디입니까? 
+```{r}
+system.time(
+hourAggr <- aggregate(trainData$timestamp,
+                        list(hour=trainData$hour),
+                        FUN=length)
+)
+
+unique(trainData$hour)
+hourAggr
+```
+
+6. 관광객 개인별 주중통화량과 주말통화건수를 합산한 데이터프레임을 
+   작성하는 코드를 적고,
+   결과물을 별도의 RData화일로 만들시오.
+   
+   - 컬럼명은 다음과 같이 만들어 주시기 바랍니다.
+     touristID, weekdayCall, weekendCall
+     
+```{r}
+system.time(
+idwdayAggr <- aggregate(trainData$timestamp,
+                        list(id=trainData$touristID,
+                             wday=trainData$wday),
+                        FUN=length)
+)
+head(idwdayAggr)
+
+# install.packages("reshape")
+library(reshape)
+system.time(
+idwdayAggrCast <- cast(idwdayAggr, id ~ wday, value="x", fun.aggregate=sum)
+)
+
+head(idwdayAggrCast)
+idwdayAggrCast$weekdayCall <- apply(idwdayAggrCast[,2:6],1,sum)
+idwdayAggrCast$weekdendCall <- apply(idwdayAggrCast[,7:8],1,sum)
+head(idwdayAggrCast)
+```
+
+
+7. 국내행정구역별로 해외방문객의 국가별 통화건수 비중을 데이터프레임으로 작성하시오.
+
+- hint : 행은 city, 열은 nation으로 작성하고, 각 city별로 합계를 구한 다음,
+  각 city별 nation의 수치를 합계로 나누면 비중이 나옵니다. 
+
+```{r}
+system.time(
+cityNationAggr <- aggregate(trainData$timestamp,
+                        list(city=trainData$city,
+                             nation=trainData$nation),
+                        FUN=length)
+)
+head(cityNationAggr)
+
+system.time(
+cityNationAggrCast <- cast(cityNationAggr, city ~ nation, value="x", fun.aggregate=sum)
+)
+cityNationAggrCast
+cityNationAggrCast$sum <- apply(cityNationAggrCast[,2:11],1,sum)
+cityNationAggrCastPercent <- data.frame(city=cityNationAggrCast$city,
+                                        cityNationAggrCast[,2:11]/cityNationAggrCast$sum)
+cityNationAggrCastPercent
+
+save(list=ls(), file="midtest_장운호_86204073.RData") #약 6M정도의 파일이 작성됨.
+```
+
+
+8. save(list=ls(), file="midtest_이름_학번.RData") 명령을 실행하여, 별도의
+파일로 작업했던 객체들을 저장하고, 저장된 객체 파일을 이메일로 
+unho.chang@gmail.com으로 제출 하시오.
+
+
+###번외퀴즈
+
+9. 관광객별로 통화가 발생했던 요일의 갯수는 각각 얼아인가요?
+
+   - 예를 들어 월화수 요일에 통화발신로그가 1개 이상씩 있다면, 3이 됩니다.
+    다시하나 예를 들어 드리면 월 화 목 금토에 통화 발신 로그가 있다면,
+    5가 됩니다.
+    
+```{r}
+head(idwdayAggrCast)
+
+wdayCount <- function(x) {
+  count = 0
+  for (i in 1:length(x) ) {
+    if(x[i] > 0) count=count+1
+  }
+  return(count)
+}
+
+idwdayAggrCast$wdayCount <- apply(idwdayAggrCast[,2:8],1,function(x) wdayCount(x))
+head(idwdayAggrCast);tail(idwdayAggrCast)
+```
+
+# SQL RODBC Code
+```{r}
+# install.packages("RODBC")
+library(RODBC)
+
+db <- odbcConnect("lahman", uid="root", pwd="1234")
+
+sqlTables(db) # sql의 show tables;와 동일한 명령어임.
+
+df <- sqlQuery(db, "SELECT * FROM allstarfull WHERE playerID='aaronha01'")
+df
+
+team.df <- sqlQuery(db, "SELECT * FROM teams")
+head(team.df)
+head(team.df[team.df$yearID == 2013,])
+
+sal.df <- sqlQuery(db, "SELECT * FROM salaries")
+head(sal.df)
+sal.df[sal.df$playerID == "ryuhy01",]
+
+bat.df <- sqlQuery(db, "SELECT * FROM batting")
+head(bat.df)
+bat.df[bat.df$playerID == "ryuhy01",]
+
+master.df <- sqlQuery(db, "SELECT * FROM master")
+head(master.df)
+master.df[master.df$playerID == "ryuhy01",]
+master.df[master.df$birthCountry == "South Korea",]
+
+## 항상 닫아줘야함 
+odbcClose(db)
+
+
+# odbcClose(db) ### 마지막에 연결을 닫아주는 것을 잊으면 절대안됨.
+
+```
+

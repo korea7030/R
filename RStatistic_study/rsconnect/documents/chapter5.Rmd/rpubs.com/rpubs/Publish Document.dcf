@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/147951/90ce0518b6f74f94ba4a656d933333ac
+url: http://rpubs.com/korea7030/147951
+when: 1454123666.78015

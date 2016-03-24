@@ -1,0 +1,81 @@
+{
+    "debugBreakpointsState" : {
+        "breakpoints" : [
+            {
+                "editor_line_number" : 13,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 0,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 13,
+                "needs_updated_steps" : true,
+                "package_name" : "",
+                "path" : "C:/RCodeRepositories/Rspclecture5/facebook_R.R",
+                "state" : 1,
+                "type" : 1
+            },
+            {
+                "editor_line_number" : 36,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 1,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 36,
+                "needs_updated_steps" : true,
+                "package_name" : "",
+                "path" : "C:/RCodeRepositories/Rspclecture5/facebook_R.R",
+                "state" : 1,
+                "type" : 1
+            },
+            {
+                "editor_line_number" : 40,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 2,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 40,
+                "needs_updated_steps" : true,
+                "package_name" : "",
+                "path" : "C:/RCodeRepositories/Rspclecture5/facebook_R.R",
+                "state" : 1,
+                "type" : 1
+            },
+            {
+                "editor_line_number" : 39,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 3,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 39,
+                "needs_updated_steps" : true,
+                "package_name" : "",
+                "path" : "C:/RCodeRepositories/Rspclecture5/facebook_R.R",
+                "state" : 1,
+                "type" : 1
+            },
+            {
+                "editor_line_number" : 45,
+                "editor_state" : 1,
+                "function_name" : "toplevel",
+                "function_steps" : "",
+                "id" : 4,
+                "is_package_breakpoint" : false,
+                "is_pending_debug_completion" : false,
+                "line_number" : 45,
+                "needs_updated_steps" : true,
+                "package_name" : "",
+                "path" : "C:/RCodeRepositories/Rspclecture5/facebook_R.R",
+                "state" : 1,
+                "type" : 1
+            }
+        ]
+    }
+}

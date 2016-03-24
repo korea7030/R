@@ -1,0 +1,17 @@
+{
+    "contents" : "BaseBall <- read.csv(\"./sample/주요선수별성적-2013년.csv\")\nhead(BaseBall)\n\nbp <- barplot(BaseBall$연봉대비출루율, main=paste(\"선수별 연봉대비 출루율 분석\",\"\\n\",\"(밥값여부계산)\"), col=rainbow(25),  names.arg=BaseBall$선수명, ylim=c(0,50))\ntitle(ylab=\"연봉대비출루율\", col.lab=\"red\")\n\naver<- 0\n\nfor(i in 1:length(BaseBall$연봉대비출루율)) {\n  aver <- aver + BaseBall$연봉대비출루율[i]\n}\n\naver\n\naver <- aver/length(BaseBall$연봉대비출루율)\naver\n\nabline(h=aver, col=\"blue\")\ntext(x=aver-11, y=14.5, col=\"black\", cex=0.8, labels=paste(aver,\"%\",\"(평균출루율)\"))\ntext(x=bp*1.01, y=BaseBall$연봉대비출루율*1.05, col=\"black\", cex=0.7, labels=paste(BaseBall$연봉대비출루율,\"%\"))\n\n\n### 나이팅게일 차트 \nrow.names(BaseBall) <- BaseBall$선수명\n\nBaseBall2 <- BaseBall[,c(7,8,11,12,13,14,17,19)]\nstars(BaseBall2, flip.labels=FALSE, draw.segment=TRUE, frame.plot=TRUE, full=TRUE, main=\"야구선수별 주요 성적분석-2013년\")\n\nlabel <- names(BaseBall2)\nval <- table(label)\ncolor <- c(\"black\", \"red\", \"green\", \"blue\", \"cyan\", \"violet\", \"yellow\", \"grey\")\n## 범례용 그래프\npie(val, labels=label, col=color, radius=0.1, cex=0.6)\n\nBaseBall3 <- BaseBall[,c(2,21,22)]\nhead(BaseBall3)\n\nline1 <- BaseBall$연봉대비출루율\nline2 <- BaseBall$연봉대비타점율\npar(mar=c(5,4,4,4)+0.1)\nplot(line1, type=\"o\", axes=F, ylab=\"\", xlab=\"\", ylim=c(0,50), lty=2, col=\"blue\", main=\"한국프로야구선수별 기록분석-2013년\", lwd=2)\naxis(1, at=1:25, lab=BaseBall$선수명, las=2)\naxis(2, las=1)\n\npar(new=T)\nplot(line2, type=\"o\", axes=f, ylab=\"\", xlab=\"\", ylim=c(0,50), lty=2, col=\"red\")\naxis(4,las=1)\nmtext(side=4, line=2.5, \"연봉대비 타점율\")\nmtext(side=2, line=2.5, \"연봉대비 출루율\")\nabline(h=seq(0,50,5), v=seq(1,25,1), col=\"gray\", lty=2)\nlegend(18,50, names(BaseBall[21:22]), cex=0.8, col=c(\"red\",\"blue\"), lty=1, lwd=2, bg=\"white\")\n",
+    "created" : 1432540065793.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2591758909",
+    "id" : "212D10BC",
+    "lastKnownWriteTime" : 1432542339,
+    "path" : "~/Rrepo/Rlov/fixedData/baseball_graph.R",
+    "project_path" : "baseball_graph.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

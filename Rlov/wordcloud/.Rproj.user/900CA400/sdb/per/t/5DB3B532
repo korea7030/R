@@ -1,0 +1,17 @@
+{
+    "contents" : "cafe <- readLines(\"yeca_1.txt\")\ncafe\n\norder <- sapply(cafe, extractNoun, USE.NAMES=F)\n\nhead(order)\n\ncafe_2 <- unlist(order)\ncafe_2\n\ncafe_3 <- Filter(function(x) { nchar(x) >= 2}, cafe_2)\n\ncafe_3 <- gsub(\"공구\",\"\", cafe_3)\ncafe_3 <- gsub(\"\", \"-\", cafe_3)\ncafe_3 <- gsub(\"공구해주세요.\",\"\", cafe_3)\ncafe_3 <- gsub(\"다운로드\",\"\", cafe_3)\ncafe_3 <- gsub(\"공구해주세요~\",\"\", cafe_3)\ncafe_3 <- gsub(\"조회수\",\"\", cafe_3)\ncafe_3 <- gsub(\"추천수\",\"\", cafe_3)\ncafe_3 <- gsub(\"답변수\", \"\", cafe_3)\ncafe_3 <- gsub(\"\\\\n\",\"\", cafe_3)\ncafe_3 <- gsub(\"\\\\d+\",\"\", cafe_3)\ncafe_3 <- gsub(\"ㅠㅠ..\",\"\",cafe_3)\ncafe_3 <- gsub(\"퍼스나콘/아이디\",\"\", cafe_3)\ncafe_3 <- gsub(\"구해주세요~~\",\"\", cafe_3)\ncafe_3 <- gsub(\"구해주세요.\",\"\", cafe_3)\ncafe_3 <- gsub(\"해주\",\"\", cafe_3)\ncafe_3 <- gsub(\"부탁\",\"\", cafe_3)\ncafe_3 <- gsub(\"영역\",\"\",cafe_3)\ncafe_3 <- gsub(\"주세\",\"\",cafe_3)\ncafe_3 <- gsub(\"해주세요.\",\"\", cafe_3)\ncafe_3 <- gsub(\"해주세요\",\"\", cafe_3)\ncafe_3 <- gsub(\"해주세요~~\", \"\", cafe_3)\ncafe_3 <- gsub(\"-\", \"\", cafe_3)\ncafe_3 <- gsub(\"퍼\",\"\", cafe_3)\ncafe_3 <- gsub(\".\", \"\", cafe_3)\nhead(unlist(cafe_3), 20)\n\nwrite(unlist(cafe_3), \"yeca_2.txt\")\n\ncafe_4 <- read.table(\"yeca_2.txt\")\n\nnrow(cafe_4)\n\nwordcount <- table(cafe_4)\nhead(sort(wordcount, decreasing=T), 20)\n\npalete <- brewer.pal(9,\"Set1\")\nwordcloud(names(wordcount), freq = wordcount, scale=c(5,0,5), rot.per=1, min.freq=0.1, random.color=T, random.order=F, colors = palete)\n",
+    "created" : 1430642049011.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1252236715",
+    "id" : "5DB3B532",
+    "lastKnownWriteTime" : 1430643429,
+    "path" : "~/Rrepo/Rlov/wordcloud/cafe_R.R",
+    "project_path" : "cafe_R.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

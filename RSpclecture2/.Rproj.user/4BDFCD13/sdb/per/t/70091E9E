@@ -1,0 +1,17 @@
+{
+    "contents" : "##greeting with jpeg package------- \n\ninstall.packages(\"jpeg\")\nlibrary(jpeg)\n\n# ?jpeg\n# vignette(\"jpeg\")\n# ?vignette\n\nmtrushBMP <- readJPEG(\"image_sample.jpg\")\n\nstr(mtrushBMP)\nclass(mtrushBMP)\ndim(mtrushBMP)\nrange(mtrushBMP[1,,1])\nmax(mtrushBMP)\nmin(mtrushBMP)\n\n## max()와 min()결과로 보면 RGB를 0과 1사이의 함수값으로 나타내는 것으로 보임.\n## 따라서 일부를 지울려면, 모두 1로 바꾸면 가능할 것으로 보임.\n\nmtrushBMP[100:200,100:200,1] <- 1\nmtrushBMP[100:200,100:200,2] <- 1\nmtrushBMP[100:200,100:200,3] <- 1\n\nwriteJPEG(mtrushBMP,target=\"mtrushJPG.jpg\")\n\n##흐름제어 연습 with jpeg package--------\n\nmtrushBMP <- readJPEG(\"image_sample.jpg\")\n\nfor (x in 1:dim(mtrushBMP)[1]) \n{\n  if ( x %% 50 == 0) \n  {\n    mtrushBMP[x,,1] <- 1\n    mtrushBMP[x,,2] <- 1\n    mtrushBMP[x,,3] <- 1\n  }\n}\n\n\nwriteJPEG(mtrushBMP,target=\"mtrushJPG_x.jpg\")\n\nmtrushBMP <- readJPEG(\"b_mount-rushmore-national-memorial (1).jpg\")\n\nfor (y in 1:dim(mtrushBMP)[2]) {\n  if ( y %% 50 == 0) {\n    mtrushBMP[,y,1] <- 1\n    mtrushBMP[,y,2] <- 1\n    mtrushBMP[,y,3] <- 1\n  }\n}\n\nwriteJPEG(mtrushBMP,target=\"mtrushJPG_y.jpg\")\n\n##중첩된 흐름제어 with jpeg package\n\nmtrushBMP <- readJPEG(\"b_mount-rushmore-national-memorial (1).jpg\")\n\nfor (x in 1:dim(mtrushBMP)[1]) {if ( x %% 50 == 0) {mtrushBMP[x,,1] <- 1;mtrushBMP[x,,2] <- 1;mtrushBMP[x,,3] <- 1;}}\n\nwriteJPEG(mtrushBMP,target=\"mtrushJPG_x.jpg\")\n\nfor (y in 1:dim(mtrushBMP)[2]) {\n  if ( y %% 50 == 0) {\n    mtrushBMP[,y,1] <- 1\n    mtrushBMP[,y,2] <- 1\n    mtrushBMP[,y,3] <- 1\n  }\n}\n\ndim(mtrushBMP)\n\nwriteJPEG(mtrushBMP,target=\"mtrushJPG_xy.jpg\")",
+    "created" : 1435982675853.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3571173835",
+    "id" : "70091E9E",
+    "lastKnownWriteTime" : 1435984850,
+    "path" : "C:/RCodeRepositories/RSpclecture2/readJPEG.R",
+    "project_path" : "readJPEG.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

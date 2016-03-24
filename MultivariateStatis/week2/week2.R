@@ -1,0 +1,154 @@
+###########################################################################################
+## 어제 강의내용 입니다. 지극히 개인적인 생각으로 정리한 내용이니 빼먹을것만 빼서 보세요 ㅋ
+###########################################################################################
+# getwd()
+
+library(MVA)
+
+# x축이름
+mlab <- "Manufacturing enterprises with 20 or more workers"
+
+# y축 이름
+
+plab <- "Population size (1970 census) in thousands"
+
+# 인구와 제조사에 대한 산점도
+plot(popul~manu, data=USairpollution, xlab=mlab, ylab=plab)
+
+
+#########################################################################################
+## 아래는 위에서 나온 산점도와 manu, popul 각 변수의 분포형태를 파악하려고 3개를 다 보이는 듯 함.
+## 변수를 보면 plot은 manu, popul 에 대해 , hist는 manu에 대해, boxplot은 popul 에 대해 나타냄
+## 하는 이유는 두개의 변수 관계와 각각의 변수 분포를 파악하기 위함
+#########################################################################################
+# plot에 관측치 표시
+# matrix 형태로 그래프를 그려줌(1.1 : 2 , 1.2 : 0, 2.1 : 1, 2.2 : 3)
+# 넓이를 2:1, 높이를 1:2 로 
+layout(matrix(c(2,0,1,3), nrow = 2, byrow = TRUE), widths= c(2,1), heights= c(1,2), respect = TRUE)
+
+## 가끔가다 그리는 공간이 부족하다는 분은 이걸 세팅. 수치는 원하는대로 바꾸면됨.
+par(mar = rep(2, 4))  ## 공간부족 시
+
+## manu에 대한 범위를 변수지정(위에 텍스트 표시를 위에 점위치 보다 * 1.1 한 위치 지정)
+xlim <- with(USairpollution, range(manu)) * 1.1 
+
+## 내용없는 산점도 그래프
+plot(popul~manu, data=USairpollution, xlab = mlab, ylab = plab, type = "n")
+
+# abbreviate(row.names(USairpollution)) : row.names 에 지정된 값을 줄여줌
+## 텍스트 추가
+with(USairpollution, text(manu, popul, labels=abbreviate(row.names(USairpollution))))
+## manu에 대한 historgram
+hist(USairpollution$manu, main = "")
+
+## popul에 대한 boxplot
+boxplot(USairpollution$popul)
+
+#####################################################################################
+## 저 3가지 짓을 맨날해야 하니 귀찮고 힘드니 한번에 변수들의 관계를 볼 수 있는 package사용
+####################################################################################
+#### 산점도, 히스토그램, 상자그림 보는 packages
+install.packages("psych")
+library(psych)
+
+####################################################################################
+## 위에서 manu와 popul에 대해 변수분포 형태를 파악하는 것이기 때문에 아래 변수탐색 시 
+## 대각선에 변수를 기준으로 봐야함.
+## 즉 manu와 popul 이 맞물리는 지점 거기가 이 두 변수의 분포형태를 나타냄
+## 대각선 윗부분의 숫자는 상관계수를 나타냄
+###################################################################################
+
+## 변수탐색
+pairs.panels(USairpollution)
+# USairpollution[which(max(USairpollution$popul) && max(USairpollution$manu)), ] 
+
+## 아웃라이어 값을 알고 싶어. 
+## 분포형태 중 이상하게 돌아다니는 변수 하나 잡아서 구함
+## manu가 최대값 이면서 popul이 최대값이 현재 이상치값
+
+USairpollution[USairpollution$manu==max(USairpollution$manu), ]  ## chicago
+
+
+## 이건 과제(chicago에 대해서 각 변수 관계에서 분포형태를 다르게 포인트 주고 싶다)###############################################################################
+## pairs scatter plot matrix에서 chicago를 다른색 혹은 다른 symbol로 표시
+## col 과 pch는 문자뿐만아니라 숫자형태로도 색깔과 모양이 결정되기 때문에 logic 처리로 가능함.
+## +1은 col과 pch값은  0은 없고 1부터 시작하기 때문인 것 같음.
+pairs(USairpollution, col = as.numeric(USairpollution$manu==max(USairpollution$manu))+1,
+      pch = as.numeric(USairpollution$manu==max(USairpollution$manu))+1)
+#############################################################################################
+
+#### 이변량 상자그림
+## 선형통계 때 배운 사분위수의 개념으로 알아두면 됨. 
+## 동그라미 두개 가 둘러싸져 있는 부분이 q1 ~ q3 위치
+bvbox(USairpollution[,c("manu", "popul")], col = as.numeric(USairpollution$manu==max(USairpollution$manu))+1)
+
+## 이상치 포함 상관계수 : 0.96
+with(USairpollution, cor(manu, popul))
+
+## match(찾을 내용, 데이터)  : 데이터에서 해당 찾을 내용을 찾아라)
+outcity <- match(c("Chicago", "Detroit", "Cleveland", "Philadelphia"), rownames(USairpollution))
+outcity # 7 , 14, 9 , 30 번째
+
+## 이상치 제거 후 상관계수  0.80
+with(USairpollution, cor(manu[-outcity], popul[-outcity]))
+
+
+## bubble plot 
+## 온도와 바람과 SO2의 관계 표시 - 온도와 바람이 적절한 곳이 SO2농도가 심함
+
+## symbols(x, y , circle)  ## 세개의 변수를 나타낼때 사용. 
+## x,y 위치 분포에 대한 circle 모양이 얼마나 크게 분포되어있는지를 표시하는 듯 함.
+symbols(USairpollution$temp, USairpollution$wind, USairpollution$SO2, inches = 0.5)
+
+
+################### HW1########################################################
+
+## 참쉼죠 이건??
+crim <- read.csv(file = "crime.csv")
+
+crim2 <- crim[-1,]  ## 데이터에 United State 제거
+## 1번
+layout(matrix(c(2,0,1,3), nrow = 2, byrow = TRUE), widths= c(2,1), heights= c(1,2), respect = TRUE)
+par(mar = rep(2, 4))  ## 공간부족 시
+plot(crim2$murder, crim2$burglary)
+text(crim2$murder, crim2$burglary, labels=abbreviate(crim2$state))
+## murder의 historgram
+hist(crim2$murder, main="")
+
+## burglary의 boxplot
+boxplot(crim2$burglary)
+head(crim)
+
+##### 위 3개 그래프를 봐선 mrder(살인)이 0~10 사이일 때 burglary(절도) 절도가 많이 일어나는 걸 알 수 있음.###3
+
+## 2. 이변량 
+x <- crim2[, c("murder", "burglary"), ]
+
+bvbox(x, mtitle="", xlab="murder", ylab="burglary")
+
+#### 이변량을 봤을 때도 하나의 이상치 값을 제외 하면 0~10건의 살인에 대해 절도가 몰려 있음을 알 수 있음.
+
+crim
+## 이상치 제거(삐져나온거 하나를 제거) 
+state <- match(crim2[crim2$murder == max(crim2$murder),c("state") ],crim2$state)
+state ## 9번째
+
+crim2[state,]  ## District of Columbia .... 
+
+## 위에 구한 이상치값 제거
+crim3 <- crim2[-state,]
+
+crim2
+
+## 3. 이상치 제거 전 상관계수  ## 0.27
+cor(crim2$murder, crim2$burglary)
+
+## 이상치 제거 후 상관계수 ## 0.62  
+## 이상치 제거 후 값이 특정위치에 몰려있게 되므로 상관계수가 증가
+cor(crim3$murder, crim3$burglary)
+
+
+##  4. 살인, 절도, 인구에 대한 bubble chart
+symbols(crim3$murder, crim3$burglary, crim3$population, inches=0.5)
+
+## 살인이 0~ 10건 이면서 절도가 평균 600건인 경우에 인구가 집중되어 있다. 

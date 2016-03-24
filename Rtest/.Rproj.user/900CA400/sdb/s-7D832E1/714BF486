@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1432465537379.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "714BF486",
+    "lastKnownWriteTime" : 7741240722073845761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "basketGrade",
+        "contentUrl" : "content?title=basketGrade&file=4fc2fe63f7224be8a566137e27830b3d.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 10,
+        "totalObservations" : 193701,
+        "variables" : 10
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,18 @@
+{
+    "contents" : "install.packages(\"MVA\")\nlibrary(MVA)\n\ndemo(\"Ch-MVA\")\n\nlibrary(lattice)\n\nmeasure\n\n## 전체 데이터의 가슴,허리,엉덩이 둘레 의 공분산 \ncov(measure[,1:3])\n\n## 남자의 공분산 \ncov(measure[measure$gender ==\"male\", 1:3])\n\n## 여자의 공분산\ncov(measure[measure$gender ==\"female\", 1:3])\n\n## 상관계수 행렬 \ncor(measure[,1:3])\n\n##############################################\n## 평균이 0 이고 표준편차가 1인 데이터로 만들어줌\ncov(scale(measure[,1:3]))\n\n\n# chest 1.0000000 0.6987336 0.4778004\n# waist 0.6987336 1.0000000 0.4147413\n# hips  0.4778004 0.4147413 1.0000000\n\ncov(measure[,1:3])\n\n## 거리 구하기 --> 가장 적은 거리의 관측치를 군집분석에 활용 가능\nround(dist(scale(measure[,1:3])),2)\n\n\n\n",
+    "created" : 1441430389937.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3505545121",
+    "id" : "E4540CEB",
+    "lastKnownWriteTime" : 1441433115,
+    "path" : "C:/MultivariateStatis/week1/week1.R",
+    "project_path" : "week1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

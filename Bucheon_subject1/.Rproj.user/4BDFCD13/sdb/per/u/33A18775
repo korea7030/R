@@ -1,0 +1,18 @@
+{
+    "contents" : "A <- matrix(c(1,0,0,\n              1,1,0,\n              1,0,0,\n              0,1,0,\n              0,1,1,\n              0,1,1), byrow = T, ncol=3)\n\nn <- nrow(A)\nm <- ncol(A)\nrownames(A) <- 1:n\ncolnames(A) <- c(\"A\", \"B\",\"C\")\nB <- rbind(cbind(matrix(0,n,n),A), cbind(t(A), matrix(0,m,m)))\nvertex.col <- c(rep(\"red\", n), rep(\"blue\", m))\nvertex.cex <- c(rep(1,n), rep(2,m))\nB\ngplot(B, mode=\"circle\", displaylabels = T, boxed.labels = F, vertex.col = vertex.col, vertex.cex = vertex.cex, label.col = vertex.col, label.cex = 1.2, usearrows= F)\n\ndata(windsurferPanels)\ndynBeach<-networkDynamic(network.list=beach[-25], vertex.pid=\"vertex.names\",\n                         onsets=c(1:24,26:31),termini=c(2:25,27:32))\n\n# read in tsv files for vertex and edge spells and \n# construct network of McFarland classroom interaction data\n# see ?cls33_10_16_96 for more info about this data set\n\n# read vertex data\nrawVerts<-read.table(paste(path.package('networkDynamic'),\n                           \"/extdata/cls33_10_16_96_vertices.tsv\",sep=''),header=TRUE)\n\n# peek at column headings to find ids and times\nnames(rawVerts)\n\n# read in interation (edge) data\nrawEdges<-read.table(paste(path.package('networkDynamic'),\n                           \"/extdata/cls33_10_16_96_edges.tsv\",sep=''),header=TRUE)\n\n# peek at column headings to find ids and times\nnames(rawEdges)\n\n\n# construct network using vertex and edge timing information\ncls33 <-networkDynamic(vertex.spells=rawVerts[,c(3,4,1)],\n                       edge.spells=rawEdges[,c(3,4,1,2)])\n\n# add in the unchanging vertex attribute data\nset.vertex.attribute(cls33,\"sex\",as.vector(rawVerts$sex))\nset.vertex.attribute(cls33,\"role\",as.vector(rawVerts$role))\n\n## Not run:   # takes 5 seconds, too slow for CRAN checks\n# loop over edge data to add the dynamic attributes on the edge\nfor(r in 1:nrow(rawEdges)){\n  # get the id of the edge from its tail and head\n  eid <- get.edgeIDs(cls33,v=rawEdges$from_vertex_id[r],\n                     alter=rawEdges$to_vertex_id[r])\n  activate.edge.attribute(cls33,'interaction_type',rawEdges$interaction_type[r],\n                          onset=rawEdges$start_minute[r],terminus=rawEdges$end_minute[r],e=eid)\n  activate.edge.attribute(cls33,'weight',rawEdges$weight[r],\n                          onset=rawEdges$start_minute[r],terminus=rawEdges$end_minute[r],e=eid)\n}\n\n# convert the set of newcomb panels with rank weights\ndata(newcomb)\nnewRankDyn <-networkDynamic(network.list=newcomb.rank)\nget.network.attribute.active(newRankDyn,'title',at=3)\nas.matrix(network.collapse(newRankDyn,at=5),attrname='rank')\n",
+    "created" : 1455622920056.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3263523890",
+    "id" : "33A18775",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

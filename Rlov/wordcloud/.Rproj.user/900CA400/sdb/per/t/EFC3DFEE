@@ -1,0 +1,17 @@
+{
+    "contents" : "getwd()\nnoh <- readLines(\"noh.txt\")\nnoh\n\nnoh_sentence <- sapply(noh, extractNoun, USE.NAMES=F)\nnoh_sentence \n\nnoh_sentence1 <- unlist(noh_sentence)\nnoh_sentence1 <- Filter(function(x) { nchar(x) >= 2}, noh_sentence1)\nnoh_sentence1\n\nres <- gsub(\"\\\\d+\",\"\",noh_sentence1 )\nres <- gsub(\"이번\",\"\",res )\nres <- gsub(\"최초\",\"\",res )\nres <- gsub(\"하게\",\"\",res )\nres <- gsub(\"시작\",\"\",res )\nres <- gsub(\"사상\",\"\",res )\nres <- gsub(\"국민\",\"\",res )\nres <- gsub(\"모두\",\"\",res )\nres <- gsub(\"하기\",\"\",res )\nres <- gsub(\"기대\",\"\",res )\nres <- gsub(\"여러분\",\"\",res )\nres <- gsub(\"대통령\",\"\",res )\nres\n\nwrite(res, \"noh_1.txt\")\n\nword <- read.table(\"noh_1.txt\")\nword\n\nwordcount <- table(word)\nhead(sort(wordcount, decreasing=T))\n\nwindowsFonts(malgun=windowsFont(\"맑은 고딕\"))\n\nwordcloud(names(wordcount), freq=wordcount, scale=c(5,0.5),rot.per=0.25, min.freq=1, random.order=T, random.color=T, colors=palete, family = \"malgun\")\n\n## pie 차트 \nnoh_top10 <- head(sort(wordcount, decreasing=T),10)\npie(noh_top10)\npie(noh_top10,  radius=1)\n\npct <- round(noh_top10/sum(noh_top10)*100, 1)\nnames(noh_top10)\nlab <- paste(names(noh_top10),\"\\n\",pct,\"%\")\npie(noh_top10,main=\"노무현 전 대통령님 연설문 분석\", cex=0.8, labels=lab)\npie(noh_top10,main=\"노무현 전 대통령님 연설문 분석\", col=rainbow(10), cex=0.8, labels=lab)\n\n\n## bar 차트 \nbplot <- barplot(noh_top10, main=\"노무현 전 대통령님 연설문 분석\", col=rainbow(10), cex.names=0.8, las=2,  ylim=c(0,30))\npct <- round(noh_top10/sum(noh_top10)*100,1)\n\npct\n\ntext(x=bplot, y=noh_top10*1.05, labels=paste(\"(\",pct,\"%\",\")\"), col=\"black\", cex=0.7)\ntext(x=bplot, y=noh_top10*0.95, labels=paste(noh_top10,\"건\"), col=\"black\", cex=0.7)\n",
+    "created" : 1429435471576.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3083623479",
+    "id" : "EFC3DFEE",
+    "lastKnownWriteTime" : 1432527779,
+    "path" : "~/Rrepo/Rlov/wordcloud/noh_wordcloud.R",
+    "project_path" : "noh_wordcloud.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

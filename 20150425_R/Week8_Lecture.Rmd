@@ -1,0 +1,370 @@
+"---
+수업내용 : 
+2010 년 부터 2014년 까지의 자전거 사용 내역(16개 csv 파일)에 대한 파일들이 있는데 
+자전거를 탄 시간을 통해서 얼마동안 탔는지, 그리고 어떤 자전거가 가장 많이 사용 되었는지, 
+무슨 요일에 자전거를 많이 탔는지, 어느 시간때에 많이 탔는지 등의 내용을 알아내려 하는 문제입니다. 
+
+최대한 설명은 자세히 하겠으며, 부족한 부분은 직접 쳐보시면서 하시면 될것 같습니다. 
+---
+```{r}
+#  현재 working directory의 변수의 내용을 지웁니다. 
+# ls() 는 현재 메모리상에 올라와있는 변수리스트를 나타냅니다. 
+rm(list=ls())
+# 괄호 안의 폴더에 무슨 내용이 있는지 확인합니다.
+# 16개의 csv 파일이 있으면 맞는 겁니다. 
+dir("./dataSmpl")
+```
+
+```{r}
+# csv 파일의 이름을 csvList Vector에 저장합니다. 
+# dir로 뽑은 내용이 List가 아니기 때문에 csvList라고 해서 list가 아니라는 점.. 확인
+csvList <- dir("./dataSmpl")
+# csvList의 파일명 에서 확장자만 뽑는 역할을 합니다. 
+# substr(객체명 , 시작위치, 끝위치) : 해당 객체의 시작위치 부터 끝위치까지 자르는 역할을 합니다. 
+substr(csvList,(nchar(csvList)-3),nchar(csvList))
+```
+
+
+```{r}
+library(stringr)
+
+#  뒤에서 4번째 부터 첫번째 까지 짤라서 넣어요
+# 이 부분은 stringr 이라는 패키지를 install 함으로 써 위의 substr과 똑같은 기능을 쓸 수 있다는 것을 보여줍니다. 
+# str_sub(객체명, 시작위치, 끝위치) : substr과 같은 기능 , 특징은 시작위치와 끝위치가 -가 들어가는 점에서 substr처럼 계산을 하지않고 바로 적을 수 있다는게 장점입니다. 
+str_sub(csvList,-4,-1)
+
+```
+
+
+####
+  이 부분은 16개의 파일에 있는 자전거 정보를 저장하기 위한 for문 입니다. 
+  bikeData List에 개당 1500라인 씩 16 * 1500 만큼 저장이 됩니다.
+####
+
+```{r}
+# 빈값을 만든다. 
+bikeData <- vector(mode="list")
+
+for(i in csvList) {
+  # assign : 메모리에 괄호의 내용을 등록한다.
+  # read.csv : csv 파일을 읽는다. 
+  # paste0("1", "2") - 두개의 해당 문자를 붙여라  paste("1","2", sep="") 와 같은 기능을 합니다.
+  # str_sub(i,1,-5) : i값 인 파일명.확장자명 이 되어 있는 것을 첫번째 부터 끝의 -5 자리 까지 
+  # 자른다. 
+  # 이해가 안된다면 str_sub(csvList[1],1,-5) 하나하나 씩 실행 해보기. 
+  
+  assign(str_sub(i,1,-5), read.csv(paste0("./dataSmpl/",i), 
+                                   stringsAsFactors=FALSE))
+  #  get : 위에서 assign을 통해 올라온 변수에 대해서 받겠다는 의미(16개)
+  # envir=enviroment() 는 현재 working directory의 변수모두를 가리킨다는 의미.
+  smplDummy <- get(str_sub(i,1,-5), envir=environment())
+  ## cat : 문자열 붙이기 여기서 \n은 줄바꿈 문자를 의미
+  # 지금 상황에선 별기능이 없음
+  cat("\n",str_sub(i,1,-5),"\n","\n")
+  print(head(smplDummy))
+  
+  # 이 부분은 파일의 길이를 좀 더 짧게 하기 위함인데 
+  # 16개의 파일명을 확인해보면 Trips부터 뒷부분이 중복되기 때문에 
+  # 중복되는 부분을 제외한 나머지의 이름을 합치는 역할을 합니다. 
+  # 이 assign 을 수행하면 메모리에 Q12014 와 같은 변수가 올라갑니다. 
+  assign(paste0(str_sub(i,6,7),str_sub(i,1,4)), smplDummy)
+  
+  ## bikeData List에 smplDummy 값을 넣습니다. 
+  ## index 형태는 위의 Q12014 와 같은 형태로 index가 됩니다. 
+  bikeData[[paste0(str_sub(i,6,7),str_sub(i,1,4))]] <- smplDummy
+  
+  ## Q12014 , Q22014 와 같이 이름이 바뀐 값들을 csv 파일로 저장합니다. 
+  ## write.csv 함수의 설명은 강의자료를 참고하세요
+  write.csv(get(paste0(str_sub(i,6,7),str_sub(i,1,4)),envir=environment()), 
+            file=paste0("./dataSmpl/",paste0(str_sub(i,6,7),str_sub(i,1,4)),".csv"),
+            row.names=FALSE, fileEncoding="CP949") 
+  
+  ## 메모리에 올라와있는 변수를 지웁니다  그냥 메모리 관리 차원 하는 것 같습니다. 
+  rm(list=str_sub(i,1,-5))
+}
+
+## RData 파일을 만들어서 저장합니다.
+## save(객체, file= "파일경로") 로써 객체를 해당 파일경로에 저장 한다는 의미
+save(bikeData, file="./dataSmpl/bikeData.RData")
+```
+
+### for문에서 출력된 결과를 보면, 
+### 2013년 Q4부터 컬럼의 순서가 바뀌어져 있고, 내용은 동일하나 컬럼이름이 다른 경우가 있음.
+### 이런 경우는 병합시 문제가 되므로 합치기전에 바꿀 필요가 있음.
+
+```{r}
+# 각각의 list에 적용한다. 
+# lapply(객체, 함수명) : 해당 객체를 뒤의 함수명으로 수행하되 list로 반환하는 역할을 합니다. 
+# head는 상위 6개씩  보여주는 역할을 합니다. 
+lapply(bikeData, head)  
+names(bikeData) ## 리스트의 이름(출력 시 $ 붙어있는 이름이라고 생각 하면 됨.: $Q42014)
+length(bikeData)## 리스트의 길이
+names(bikeData)[12:16]  ## 12번째 부터 16번째 까지 뽑아
+
+# 컬럼의 순서를 맞추기위해 For문을 사용함.
+# 2013년 4분기 부터 컬럼 순서가 바뀌어져 있기 때문에, 12번째 부터 16번째 까지 뽑아서 for문을 돌립니다.
+for (i in names(bikeData)[12:16]) {
+  ## bikeData 에 컬럼 순서를 변경해서 넣습니다. 
+  bikeData[[i]] <- bikeData[[i]][,c(1,2,4,3,5:7)] 
+  print(names(bikeData[[i]]))
+}
+ 
+names(bikeData[["Q42010"]])
+
+str(bikeData[["Q42014"]])
+
+## 이 부분은 데이터를 보시면 날짜부분이 / 로 나눠져 있는게 있고 - 로 나누어져 있는게 있습니다. 
+## 통일을 위해 /로 통일하려고 문자열을 바꾸는 일을 하는 작업입니다. 
+## gsub("바꿀 패턴 ", "찾을 패턴", 대상 데이터)
+##  - 대상 데이터의 찾을 패턴을 바꾸고자 하는 패턴으로 바꿔라
+bikeData[["Q42014"]]$Start.date <- gsub("-","/",bikeData[["Q42014"]]$Start.date)
+bikeData[["Q42014"]]$End.date <- gsub("-","/",bikeData[["Q42014"]]$End.date)
+
+
+```
+
+
+## 전체 데이터 합치기
+### 합치기전에 컬럼 순서와 컬럼명등의 일치가 필요함.
+
+```{r}
+names(bikeData)
+
+lapply(bikeData, dim) #리스트로 반환됨
+
+sapply(bikeData, dim) #매트릭스 또는 array   형태로 출력됨.(row = 1500, col = 7)
+```
+
+
+### 리스트내의 컬럼이름이 모두 동일한 경우, 
+### 하나의 데이터 프레임으로 합치는 것이 가능함.
+
+__> bikeDataFull <- do.call("rbind", lapply(bikeData, as.data.frame))
+    Error in match.names(clabs, names(xi)) : 
+    names do not match previous names__
+    
+```{r}
+## 다시 확인해서 컬럼위치가 같은가 아니면 컬럼명이 다 같은지 확인을 하는 작업으로 생각하세요 
+lapply(bikeData, head)
+# Q42014의 이름으로 바꿔
+## 위의 Error 를 보시면 하나의 데이터프레임으로 합치려 하는데 column명이 match가 안된다고 해서 Error 가 발생했습니다. 저걸 방지하려고 이작업을 합니다.
+
+for (i in names(bikeData)) {
+  names(bikeData[[i]]) <- names(bikeData[["Q42014"]]) 
+  print(names(bikeData[[i]]))
+}
+
+#3 다시 확인
+lapply(bikeData, head)
+
+## rbind : row 형태로 붙여가며 변수를 만들겠다는 의미
+## cbind 는 column 형태로 붙여가며 생성하겠다는 의미
+## bikeDataFull 이라는 dataframe을 만들기 위해 bikeData를 써서 만듭니다. 
+
+bikeDataFull <- do.call("rbind", lapply(bikeData, as.data.frame))
+```
+
+## 내용 확인 
+```{r}
+head(bikeDataFull)
+tail(bikeDataFull)
+```
+
+## 이제 자전거 사용 시간을 구하기 위한 작업을 합니다. 
+## 자전거 사용 시간은 자전거를 타기 시작한 시간 - 자전거 타기를 끝낸 시간 입니다. 
+```{r}
+#  system의 수행시간 나타내기
+system.time(
+bikeDataFull$Start.date <- strptime(bikeDataFull$Start.date, format="%m/%d/%Y %H:%M")
+)
+bikeDataFull$Start.date
+
+bikeDataFull$End.date <- strptime(bikeDataFull$End.date, format="%m/%d/%Y %H:%M")
+str(bikeDataFull)
+
+bikeDataFull$End.date
+# POSIXlt, POSIXt 의 타입이 list이냐#
+is.list(bikeDataFull$Start.date)
+mode(bikeDataFull$Start.date)
+
+## 시간에 대한 내용을 확인할 경우 
+unclass(bikeDataFull$Start.date[1])
+
+## 객체의 속성 확인
+class(bikeDataFull$Start.date[1])
+
+bikeDataFull$ride.time <- as.numeric((bikeDataFull$End.date - bikeDataFull$Start.date)/60)
+
+# 이용한 요일을 나타내기 위해 ride.wday 라는 값을 넣어 추가하여 사용요일을 나타낸다. 
+# 쉽게 말해 일단 table에 컬럼을 추가한다고 보면 됩니다. 
+bikeDataFull[,"ride.wday"] <- bikeDataFull$Start.date$wday
+
+## 자전거 사용 시작 시간 구하기
+bikeDataFull$hour <- bikeDataFull$Start.date$hour
+str(bikeDataFull)
+str(bikeDataFull$hour)
+
+## ride.wday라는 data.frame의 속성으로 생성된 wday를 구분할 수 있는 값으로 변경
+bikeDataFull$ride.wday <- factor(bikeDataFull$ride.wday, levels=c(1:6,0), ordered=T,
+                                 labels=c("월","화","수","목","금","토","일"))
+
+head(bikeDataFull)
+
+#3 subscripttion.Type을 factor 형태로 변경
+bikeDataFull$Subscription.Type <- as.factor(bikeDataFull$Subscription.Type)
+
+#3 fector로 변경되었는지 확인
+## "casual", "Registered", "subscriber" 가 나와야함
+levels(bikeDataFull$Subscription.Type)
+
+## factor 변수에 대한 table 적용 시 각 factor별로 빈도수를 확인 가능
+table(bikeDataFull$Subscription.Type)
+
+#자전거 기종을 factor로 변경
+bikeDataFull$Bike. <- as.factor(bikeDataFull$Bike.)
+str(bikeDataFull)
+```
+
+
+### Data Aggregation
+
+```{r}
+##  aggregate : 집계를 한다. 
+##  aggregate(집계할 변수, 집계기준 변수, 수행 함수명) 
+##  자전거 사용시간을 요일별로 평균을 구하라
+wdayStat <- aggregate(bikeDataFull$ride.time, by=list(wday=bikeDataFull$ride.wday), FUN=mean)
+wdayStat
+
+barplot(wdayStat$x, names.arg = wdayStat$wday)
+```
+
+```{r}
+## 요일별 사용 시간이 가장 긴  내용을 집계한다.
+wdayStat2 <- aggregate(bikeDataFull$ride.time, by=list(wday=bikeDataFull$ride.wday), FUN=length)
+wdayStat2
+```
+
+```{r}
+## 자전거 번호와 자전거 사용 요일을 기준으로 사용시간의 길이를 집계한다. 
+wdayStat3 <- aggregate(bikeDataFull$ride.time, 
+                       by=list(bikeNo=bikeDataFull$Bike.,
+                               wday=bikeDataFull$ride.wday), 
+                       FUN=length)
+head(wdayStat3);
+tail(wdayStat3)
+```
+
+```{r}
+## 자전거의 번호와 자전거 사용 요일을 기준으로 사용시간의 합계를 집계한다. 
+wdayStat4 <- aggregate(bikeDataFull$ride.time, 
+                       by=list(bikeNo=bikeDataFull$Bike.,
+                               wday=bikeDataFull$ride.wday), 
+                       FUN=sum)
+head(wdayStat4);
+tail(wdayStat4)
+
+library(reshape)
+
+## 사용시간 합계를 자전거 번호, 요일 별의 합계로 데이터를 변경해서 저장
+wdayStat4Cast <- cast(wdayStat4, bikeNo ~ wday, value="x", fun.aggregate=sum) 
+summary(wdayStat4Cast)
+head(wdayStat4Cast);tail(wdayStat4Cast)
+
+## apply(X margin, 함수) 
+##  - x에 margin이 1이면 행으로, 2이면 열로 각 요소에 함수를 적용하는 역할을 합니다. 
+## 즉, wdayStat4Cast의 요일별 시간합계(sum)을 행의 형태로 wdayStat4Cast에 적용
+
+wdayStat4Cast$timeSum <- apply(wdayStat4Cast[,2:8],1,sum)
+head(wdayStat4Cast);
+tail(wdayStat4Cast)
+```
+
+```{r}
+head(wdayStat4Cast);tail(wdayStat4Cast)
+
+## 사용시간 합계를 오름차운스로 정렬
+timeSumOrder <- order(wdayStat4Cast$timeSum, decreasing = TRUE)
+timeSumOrder
+
+wdayStat4Cast <- wdayStat4Cast[timeSumOrder,]
+
+head(wdayStat4Cast);
+tail(wdayStat4Cast)
+head(timeSumOrder);tail(timeSumOrder)
+```
+
+```{r}
+## 자전거 번호 별 사용 시간의 길이 집계
+bikeStat <- aggregate(bikeDataFull$ride.time, 
+                       by=list(bikeNo=bikeDataFull$Bike.), 
+                       FUN=length)
+
+names(bikeStat) <- c("bikeNo","NumOfRiders")
+head(bikeStat);tail(bikeStat)
+
+
+library(plyr)
+## 자전거의 사용시간합계 데이터에 자전거 사용자 수를 구한 값을 합칩니다. 
+wdayStat4CastJoin <- join(wdayStat4Cast, bikeStat, by = "bikeNo")
+head(wdayStat4CastJoin);tail(wdayStat4CastJoin)
+```
+
+
+```{r}
+## 시간 별 자전거 사용시간을 나타내라
+hourStat <- aggregate(bikeDataFull$ride.time, 
+                       by=list(hour=bikeDataFull$hour), 
+                       FUN=length)
+plot(hourStat, type="l")
+```
+
+
+```{r}
+## 사용자 유형, 시간 별 사용시간응ㄹ 나타내라
+typeStat <- aggregate(bikeDataFull$ride.time, 
+                       by=list(userType=bikeDataFull$Subscription.Type,
+                               hour=bikeDataFull$hour), 
+                       FUN=length)
+typeStat
+
+## 각각 사용자 유형별 시간대 이용자
+plot(typeStat[typeStat$userType=="Casual",2:3], type="l", ylab="시간대별 이용자")
+plot(typeStat[typeStat$userType=="Subscriber",2:3], type="l", ylab="시간대별 이용자")
+plot(typeStat[typeStat$userType=="Registered",2:3], type="l", ylab="시간대별 이용자")
+```
+
+
+```{r}
+## 사용자 유형, 시간 별 사용시간의 평균을 구하라
+typeStat2 <- aggregate(bikeDataFull$ride.time, 
+                       by=list(userType=bikeDataFull$Subscription.Type,
+                               hour=bikeDataFull$hour), 
+                       FUN=mean)
+attributes(typeStat2)
+
+## 각 사용자 유형별 시간대 평균 이용시간
+plot(typeStat2[typeStat$userType=="Casual",2:3], type="l", ylab="시간대별 평균 이용시간")
+plot(typeStat2[typeStat$userType=="Subscriber",2:3], type="l", ylab="시간대별 평균 이용시간")
+plot(typeStat2[typeStat$userType=="Registered",2:3], type="l", ylab="시간대별 평균 이용시간")
+```
+
+
+```{r}
+## tapply(data, index(factor 값), 함수명, na.rm=T)
+## 이 말은 data를 index 값 즉 factor값으로 그룹화하여 함수명을 수행합니다. 
+## 여기서 na.rm=T 는 NA값을 지우는걸 허용 한다는 의미입니다. 
+
+## 사용 시간을 subscription.Type 별로 그룹화하여 평균을 구한다. 
+typeStat3 <- tapply(bikeDataFull$ride.time, bikeDataFull$Subscription.Type, mean, na.rm=T)
+typeStat3
+str(typeStat3)
+attributes(typeStat3)
+```
+
+
+```{r}
+## 사용시간을 subscriptionType과 요일별로 그룹화하여 평균을 구하라
+typeStat4 <- tapply(bikeDataFull$ride.time, list(userType=bikeDataFull$Subscription.Type,
+                                                 wDay=bikeDataFull$ride.wday), mean, na.rm=T)
+attributes(typeStat4)
+```

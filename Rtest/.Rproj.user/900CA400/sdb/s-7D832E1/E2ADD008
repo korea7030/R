@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1432464266002.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E2ADD008",
+    "lastKnownWriteTime" : 7741240722073845761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "basketCustom",
+        "contentUrl" : "content?title=basketCustom&file=e3d4853d7b4a45e1865001caa083f707.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 12,
+        "totalObservations" : 193701,
+        "variables" : 12
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

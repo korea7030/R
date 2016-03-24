@@ -1,0 +1,601 @@
+---
+title: "데이터 처리 및 가공 패키지"
+output: html_document
+---
+
+sqldf 패키지 ; SQL문을 통해 data.frame을 조회하는 패키지
+
+```{r, echo=FALSE}
+# install.packages("sqldf")
+library(sqldf)
+
+```
+iris 테이블을 조회.
+```{r}
+sqldf("SELECT distinct Species FROM iris")
+```
+
+setosa에 속하는 데이터에서 Sepal.Length의 평균 조회
+주의사항은 SQL에서 "."은 테이블의 컬럼이 될 수 없기 때문에 "_"로 대신써서 조회
+```{r}
+
+sqldf('select avg("Sepal.Length") from iris where Species="setosa"')
+
+```
+
+위의 조회값을 R의 기본함수를 쓸 경우 
+```{r}
+mean(subset(iris, Species == "setosa")$Sepal.Length)
+```
+
+종별 Sepal.Length의 평균 
+```{r}
+sqldf('select avg("Sepal.Length") from iris group by "Species"')
+```
+
+```{r, echo=FALSE}
+head(sapply(split(iris$Sepal.Length, iris$Species), mean))
+```
+
+
+위의 조회값을 R의 기본함수로 쓸 경우
+이와 같이 R코드를 모를 경우 sqldf는 쉽게 사용할 수 있다
+
+sqldf 는 오로지 조회용으로만 사용 된다는 점 알아두자.
+```{r}
+
+sqldf('insert into iris values (1.0,2.0,2.0,2.0, "setosa")')
+
+```
+
+분할 적용, 재조합을 통한 데이터 분석
+```{r}
+# install.packages("plyr")
+library(plyr)
+
+```
+
+1) adply() : 배열(a)을 받아 데이터 프레임(d)를 반환하는 함수
+             입력데이터가 행렬처럼 다룰 수 있는 형태의 데이터 인가가 중요
+             
+   vs apply() : apply()의 경우 행방향 처리 시 각 컬럼의 데이터 타입이 다르면 예상치 못한 값으로 반환한다.
+
+행이 같은 타입을 가진 경우는 문제 없음.
+```{r}
+head(apply(iris[,1:4] , 
+            1,
+            function(row) { print(row)}))
+```
+
+행이 서로 다른 타입을 가진 경우는 예상치 못한 형변환이 발생
+```{r}
+head(apply(iris,
+        1,
+        function(row) { print(row)}))
+```
+
+adply는 변수의 형변환이 발생하지 않는다.
+```{r}
+head(adply(iris, 
+      1, 
+      function(row) { row$Sepal.Length >= 5.0 & 
+          row$Species == "setosa"}))
+```
+
+
+```{r}
+head(adply(iris,
+        1,
+        function(row) {
+          data.frame(sepal_ge_5_setosa = c(row$Sepal.Length >= 5.0 &
+                                              row$Species == "setosa"))
+        }))
+
+
+head(adply(iris,
+        1,
+        function(row) {
+          if (row$Sepal.Width >= 3.5) {
+                a = "A"         
+          }else {
+                a = "B"         
+          }
+          data.frame(sepal_ge_5_setosa = 
+                       a)
+        }))
+head(iris)
+```
+
+2) ddply() : 데이터프레임(d)을 입력받아 데이터프레임(d)로 내보내는 함수
+```{r}
+head(ddply(iris,
+      .(Species),
+      function(sub) {
+        data.frame(sepal.width.mean = mean(sub$Sepal.Width))
+      }))
+```
+
+adply()와 같이 data.frame형태로 반환 안할 경우 임의 컬럼값 V1이 들어감.
+```{r}
+head(ddply(iris,
+      .(Species),
+      function(sub) {
+        mean(sub$Sepal.Width)
+      }))
+```
+
+여러 변수를 그룹화 하고자 한다면
+```{r}
+head(ddply(iris,
+        .(Species, Sepal.Length > 5.0),
+      function(sub) {
+        data.frame(sepal.width.mean = mean(sub$Sepal.Width))
+      }))
+```
+
+3) mdply()
+```{r}
+(x<- data.frame(mean=1:5, sd=1:5))
+mdply(x, rnorm, n=2)
+
+```
+그룹마다 연산을 쉽게 수행하기
+1) transform() : 변환할 객체에 대한 데이터 프레임을 반환 
+```{r}
+head(ddply(baseball, .(id), transform, cyear = year - min(year) + 1))
+
+```
+
+2) mutate() : 데이터 프레임에 새로운 컬럼을 추가하거나 기존 컬럼을 수정(여러개 추가 가능)
+```{r}
+head(ddply(baseball, .(id), mutate, cyear = year - min(year)+1, log_cyear = log(cyear)))
+```
+
+mutate 는 아래 처럼도 표현 가능(단, 아래처럼 할 경우 한 컬럼씩만 추가)
+```{r}
+baseball$cyear = baseball$year - min(baseball$year)+1
+```
+3) summarise() : 데이터 프레임을 요약한다.
+```{r}
+head(ddply(baseball, .(id), summarise, minyear = min(year)))
+```
+
+아래 처럼 group_by() 후 summarise() 사용도 가능
+```{r}
+# install.packages("dplyr")
+library(dplyr)
+baseball_grp <- group_by(baseball, id) ## group_by 로 id 지정 후
+head(summarise(baseball_grp, minyear = min(year))) ## summarise 활용 가능
+head(summarize(baseball_grp, minyear = min(year))) ## summarize도 같은 기능을 수행함
+```
+4) subset() : 벡터,행렬, 데이터 프레임의 일부를 반환한다.
+```{r}
+head(ddply(baseball, .(id), subset, g==max(g)))
+```
+
+데이터 구조의 변형과 요약
+
+```{r}
+# install.packages("reshape2")
+library(reshape2)
+```
+
+1) melt() : 식별자id, 측정변수variable, 측정치value 형태로 데이터를 재구성하는 함수
+```{r}
+head(french_fries)
+m <- melt(french_fries, id.vars = 1:4)
+head(m)
+which(is.na(m) == TRUE)
+
+x <- c(1,2,3,4)
+
+mean(x)
+
+x <- c(1,2,NA,3)
+sum(x)
+mean(x, na.rm = TRUE)
+```
+melt를 쓰게 되면 variable 마다 그룹 지어 통계치를 계산하는 작업이 간단해진다.
+```{r}
+head(ddply(m, .(variable), summarise, mean = mean(value, na.rm=TRUE)))
+```
+
+위에서 na.rm=TRUE 결과는 melt결과로 인해 value가 NA 값이 필요해서 쓴 값이다.
+NA를 포함한 행을 확인하는 건 complete.cases()
+```{r}
+head(french_fries[!complete.cases(french_fries), ])
+```
+
+NA를 포함한 측청치를 melt단계 서부터 제거하려면
+```{r}
+m <- melt(id=1:4, french_fries, na.rm=TRUE)
+head(m)
+```
+
+2) cast() : melt된 데이터를 다시 컬럼으로 변환. 얻고자하는 데이터 타입에 따라 dcast(), acast()로 구분
+
+french_fries데이터를 melt() 후 dcast()로 원데이터로 변환하는 예제
+```{r}
+m <- melt(french_fries, id.vars=1:4)
+head(m)
+r <- dcast(m, time+treatment+subject+rep ~ ...)
+head(r)
+rownames(r) <- NULL
+rownames(french_fries) <- NULL
+identical(r, french_fries)
+```
+
+dast() 시 time만 포뮬러에서 ~ 왼쪽에 적고 측정 변수를 오른쪽에 적은 예
+```{r}
+m <- melt(french_fries, id.vars=1:4)
+head(dcast(m, time~variable))
+```
+
+```{r}
+head(dcast(m, time~variable, mean, na.rm=TRUE))
+```
+dcast 호출 시포뮬러 ~ 우측은 측정 변수를 적는 곳, 측정변수는 결과에서 새로운 컬럼이 됨.
+```{r}
+head(dcast(m, time~treatment+variable, mean, na.rm = TRUE))
+```
+
+5. 데이터 테이블 : 더 빠르고 편리한 데이터 프레임, 데이터 프레임 대신 사용이 가능하다.
+   장점 : 빠른속도, 연산의 편의성
+```{r}
+# install.packages("data.table")
+library(data.table)
+class(data.table())
+```
+
+```{r}
+iris_table <- as.data.table(iris)
+x <- data.table(x=c(1,2,3), y=c("a","b","c"))
+tables()
+```
+
+데이터 접근과 그룹 연산 
+```{r}
+DT <- as.data.table(iris)
+DT[1,]
+DT[DT$Species == "setosa",]
+DT[1, Sepal.Length]
+DT[1, list(Sepal.Length, Species)]
+DT[, mean(Sepal.Length)]
+DT[, mean(Sepal.Length - Sepal.Width)]
+```
+
+두번째 인자로 컬럼명을 담은 문자열이나 컬럼 번호를 지정하고자 한다면 with=FALSE 옵션 사용
+```{r}
+iris_table[1,1,with=FALSE]
+
+iris_table[1,1]
+
+```
+
+세번째 인자는 그룹 지을 변수를 지정 
+```{r}
+DT[, mean(Sepal.Length), by="Species"]
+```
+
+변수가 여러개면 by로 나열가능
+```{r}
+DT <- data.table(x=c(1,2,3,4,5), y=c("a","a","a","b","b"), z=c("c","c","d","d","d"))
+DT[, mean(x), by="y,z"]
+```
+
+Key를  사용한 빠른 접근
+```{r}
+# LETTERS
+DF <- data.frame(x=runif(260000), y=rep(LETTERS, each=10000))
+
+system.time(x <- DF[DF$y == "C",])
+```
+
+y값에 색인을 생성해 검색 시 이용
+```{r}
+
+require(data.table)
+DT <- as.data.table(DF)
+
+setkey(DT,y)
+DT[1,y]
+system.time(x <- DT[J("C"), ])
+DT[J("C"), list(x_mean = mean(x), x_std = sd(x))]
+```
+
+key를 사용한 데이터 테이블 병합
+```{r}
+DT1 <- data.table(x=runif(260000), y=rep(LETTERS, each=10000))
+DT2 <- data.table(y=c("A","B","C"), z=c("a","b","c"))
+
+setkey(DT1,y)
+nrow(DT1[DT2, ])
+
+setkey(DT2, y)
+nrow(DT2[DT1,])
+
+```
+
+vs merge() 와의 속도 차이
+```{r}
+system.time(DT1[DT2,])
+
+DF1 <- as.data.frame(DT1)
+DF2 <- as.data.frame(DT2)
+system.time(merge(DF1, DF2))
+```
+
+참조를 사용한 데이터 수정
+책은 속도가 빠르다 했으나 실행시 그렇지 않음..
+```{r}
+m <- matrix(1, nrow=1000, ncol=100)
+DF <- as.data.frame(m)
+head(DF)
+DT <- as.data.table(m)
+head(DT)
+
+system.time({
+  for (i in 1:1000) {
+    DF[i,1] <- i
+  }
+})
+
+system.time({
+  for (i in 1:1000) {
+    DT[i, V1 := i]
+  }
+})
+```
+리스트를 데이터 프레임으로 변환하기
+ldply()와 llply()의 성능 비교
+```{r}
+library(plyr)
+system.time(x <- ldply(1:10000, function(x) {
+  data.frame(val = x, val2 = 2*x, val3 = 2 / x, val4 = 4*x, val5 = 4/x)
+}))
+
+system.time(x <- llply(1:10000, function(x) {
+  data.frame(val = x, val2 = 2*x, val3 = 2 / x, val4 = 4*x, val5 = 4/x)
+}))
+```
+
+데이터 프레임으로 합치기
+```{r}
+x<- lapply(1:1000, function(x) {
+  data.frame(val=x, val2=2*x, val3=2/x, val4=4*x, val5=4/x)
+})
+
+
+system.time(y <- do.call(rbind, x)) ## 여러개의 data.frame을 합칠때 사용
+
+```
+
+위와같이 시간이 걸리기 때문에 rbindlist를 통해 시간단축 가능
+```{r}
+system.time(x <- ldply(1:10000, function(x) {  ## list를 data.frame으로 
+  data.frame(val = x, val2 = 2*x, val3 = 2 / x, val4 = 4*x, val5 = 4/x)
+})) 
+
+system.time(x <- llply(1:10000, function(x) { ## 1.우선 list화 시킴
+  data.frame(val = x, val2 = 2*x, val3 = 2 / x, val4 = 4*x, val5 = 4/x)
+}))
+
+system.time(x <- rbindlist(x))  ## 2. 그 결과를 다시 data.table로 변경
+```
+
+더 나은 반목문
+```{r}
+# install.packages("foreach")
+library(foreach)
+```
+
+```{r}
+foreach(i=1:5) %do% { ## combine 미 지정 시 list로 출력
+  return (i)
+}
+```
+```{r}
+foreach(i=1:5, .combine=c) %do% { ## vector로 출력
+  return (i)
+}
+```
+```{r}
+foreach(i=1:5, .combine=rbind) %do% { ## rbind 즉 세로형태로 출력
+  return (i)
+}
+
+foreach(i=1:5, .combine=cbind) %do% { ## cbind 즉 가로형태로 출력
+  return (i)
+}
+
+foreach(i=1:10, .combine="+") %do% {  ## 사칙연산도 가능
+  return(i)
+}
+```
+
+병렬처리 : window의 경우 doParallel 사용
+```{r}
+# install.packages("doParallel")
+library(doParallel)
+```
+프로세스 수 설정
+```{r}
+registerDoParallel(cores=4)
+```
+plyr의 병렬화 : .parallel 옵션을 TRUE로 지정하여 병렬처리 
+```{r}
+
+big_data <- data.frame(
+  value = runif(NROW(LETTERS) * 200000),
+  group = rep(LETTERS, 200000))
+
+# dlply(big_data, .(group), function(x) {
+#   mean(x$value)
+# }, .parallel = TRUE)
+```
+
+foreach의 병렬화 : %do% 대신 %dopar%로 지정
+```{r}
+big_data <- data.frame(
+  value = runif(NROW(LETTERS) * 200000),
+  group = rep(LETTERS, 200000))
+
+foreach(i = 1:10000) %dopar% {
+  mean(big_data$value + i)
+}
+```
+
+유닛테스트와 디버깅
+```{r}
+# install.packages("testthat")
+library(testthat)
+```
+```{r}
+a <- 1:3
+a
+b <- 1:3
+b
+expect_equal(a,b) # 문제없음
+expect_equivalent(a,b)
+
+names(a) <- c('a','b','c') # a vector에 이름부여
+a
+b
+# expect_equal(a,b) # vector들 간의 이름,값 확인
+expect_equivalent(a,b) # vector들 간의 값만 확인
+```
+
+```{r}
+fib <- function(n) {
+  if (n==0) {
+    return(1)
+  }
+  if (n < 0) {
+    return (fib(n-1) + fib(n-2))
+  }
+}
+
+expect_equal(1,fib(0)) # 성공
+expect_equal(1,fib(1)) # 에러
+
+```
+
+테스트 그룹화 : test_that
+```{r}
+test_that("base case", {
+  expect_equal(1, fib(0))
+  # expect_equal(1, fib(1))
+})
+```
+
+```{r}
+fib <- function(n) {
+  if (n==0 || n==1) {
+    return(1)
+  }
+  if (n >=2) {
+    return (fib(n-1) + fib(n-2))
+  }
+}
+
+test_that("base test", {
+  expect_equal(1, fib(0))
+  expect_equal(1, fib(1))
+})
+
+test_that("recursion test", {
+  expect_equal(2, fib(2))
+  expect_equal(3, fib(3))
+  expect_equal(5, fib(4))
+})
+
+```
+
+테스트위한 소스실행
+```{r}
+# source("run_tests.R")
+```
+
+디버깅 위한 방법
+
+1) print()
+```{r}
+fibo <- function(n) {
+  if (n==1 || n==2) {
+    print("base case") ## 이부분을 호출하는지 확인
+    return(1)
+  }
+  
+  print(paste0("fibo(", n-1, ")+fibo(", n-2, ")"))  ## 이부분을 호출하는지 확인
+  return(fibo(n-1) + fibo(n-2))
+}
+
+fibo(1)
+fibo(2)
+fibo(3)
+```
+2) sprintf() : 주어진 규칙에 맞게 문자열 반환
+```{r}
+sprintf("%d", 123)
+sprintf("Number : %d ", 123)
+sprintf("Number : %d, Sring : %s", 123, "hello")
+sprintf("%.2f", 123.456)
+sprintf("%5d", 123)
+sprintf("%5d", 1234)
+```
+3) cat() : 내용 출력 후 줄바꿈이 일어나지 않음
+```{r}
+print("hi"); print("hello")
+cat("hi");cat("hello")
+cat("hi\n");cat("hello")
+
+sum_to_ten <- function() {
+  sum <- 0
+  cat("Adding ...")
+  for (i in 1:10) {
+    sum <- sum+i
+    cat(i, "...")
+  }
+  cat("Done!", "\n")
+  return (sum)
+}
+
+sum_to_ten()
+```
+
+4) browser() : 호출된 시점부터 수행 중지 후 디버깅 모드 시작
+```{r}
+sum_to_ten_browser <- function() {
+  sum <- 0
+  
+  for (i in 1:10) {
+    sum <- sum+i
+    if (i >= 5) {
+      browser()
+    }
+  }
+  return (sum)
+}
+
+sum_to_ten_browser()
+```
+
+코드 프로파일링 : 메모리나 CPU사용량 평가
+```{r}
+add_one <- function(val) {
+  return (val+1)
+}
+
+add_one_to_vec <- function(x) {
+  for (i in seq_along(x)) {
+    x[i] <- add_one(x[i])
+  }
+  return (x)
+}
+
+# Rprof("add_one.out")  ## 프로파일링 열기
+x <- add_one_to_vec(1:100000)
+head(x)
+# Rprof(NULL)          ## 프로파일링 닫기
+# summaryRprof("add_one.out")
+```

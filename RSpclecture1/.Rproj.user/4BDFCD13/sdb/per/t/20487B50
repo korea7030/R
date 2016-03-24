@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1435971868000.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "20487B50",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "1vfc3n2ss2",
+        "caption" : "datairis",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=datairis&cache_key=1vfc3n2ss2",
+        "displayedObservations" : 150,
+        "environment" : "",
+        "object" : "datairis",
+        "totalObservations" : 150,
+        "variables" : 5
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

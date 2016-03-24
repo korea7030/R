@@ -1,0 +1,177 @@
+install.packages("TeachingDemos")
+library(TeachingDemos)
+library(reshape)
+attach(tips)
+
+## tip의 평균
+mean(tip)
+
+## tip의 중위수 
+## 데이터가 치우쳐 있는 분포일 경우 사용
+median(tip)
+
+## 사분위수 tip
+quantile(tip)
+
+## 10분위수 tip
+quantile(tip, seq(0,1,0.1))
+
+## tip의 분산 
+var(tip)
+
+## tip의 표준편차 
+sd(tip)
+sqrt(var(tip))
+
+## 변동계수 
+sd(tip)/mean(tip)
+
+## 사분위수 범위 : Q1 과 Q3의 차이
+IQR(tip)
+
+## 통계치 
+summary(tip)
+
+install.packages("psych")
+library(psych)
+
+describe(tip)
+?describeBy
+
+describeBy(tips, group=tips$sex)
+warnings()
+
+## 상자그림
+## horizontal = TRUE : 가로로 표시
+## xlab : x축 제목
+## main : 그래프의 제목
+## ylab : y축 제목
+## col : 그래프의 색깔(번호로도 가능하다) 
+boxplot(tip, col="2", horizontal=TRUE, xlab="Tip", main="Tips")
+
+## 히스토그램
+## probability : 비율로 표시할 경우
+hist(tip, probability=TRUE, main="히스토그램", xlab="Tip", ylab="분포")
+## 추세선 추가
+lines(density(tip), col="blue")
+
+## Q-Q Normality Plot 
+qqnorm(tip)
+qqline(tip, col=2)
+
+x = rnorm(100)
+qqnorm(x)
+qqline(x, col=2)
+
+
+dir()
+############################## movie #########################
+
+movie_data <- read.csv("movie_MBA2.csv")
+head(movie_data)
+attach(movie_data)
+## total_seen 에 대한 평균 
+mean(total_seen)  ## 1526821
+## total_seen 에 대한 중위수 
+median(movie_data$total_seen)  ## 790181
+
+## total_seen 에 대한 사분위수 
+quantile(total_seen)
+
+## total_seen에 대한 분산 
+var(total_seen)
+
+## total_seen에 대한 표준편차
+sd(total_seen)
+
+## total_seen에 대한 사분위수 범위 
+IQR(total_seen)
+
+total_seen <- as.numeric(format(total_seen, scientific = FALSE))
+total_seen
+## total_seen에 대한 박스그림 
+boxplot(total_seen, horizontal=TRUE, xlab="총관객수", col="3")
+
+## total_seen에 대한 히스토그램
+hist(total_seen,  probability = TRUE, xlab="총관객수")
+
+?format
+## 5. 각등급별 매출액 을 구하라 
+ratingsales <- aggregate(total_sales, by=list(rating), FUN=mean)
+max(ratingsales$x)
+min(ratingsales$x)
+## las : xlab의 세로 출력
+barplot(ratingsales$x, names.arg = ratingsales$Group.1, las=2)
+par(mar=c(10,4,4,2))
+
+dir()
+
+#################################################################
+summary(tips)
+
+## tips의 day를 factor화 해라 
+tips$day <- factor(tips$day, levels=c("Thur", "Fri", "Sat", "Sun"))
+summary(tips)
+
+x <- c(0,0,1,1,1,0,0,1)
+
+x <- factor(x, levels=c(0,1), labels=c("Female", "Male"))
+summary(x)
+table(x)
+
+mytable <- table(tips$day)
+## 막대그래프
+barplot(mytable)
+## pie 차트
+pie(mytable) 
+
+## pie 차트에 퍼센트 추가 
+lbl <- paste(names(mytable), ", ", round(mytabl5e/sum(mytable) * 100), "%", sep="")
+pie(mytable, labels=lbl) 
+
+
+### 두개의 데이터 간의 요약 : 분할표 만들기 
+mytable2 <- xtabs(~sex+day, tips)
+mytable2
+
+## legend : 범례 추가
+## beside : 자료간의 구분을 쉽게 함
+barplot(mytable2, legend.text=c("Female", "Male"), beside=TRUE)
+
+## 모자익 그림 
+mosaicplot(mytable2)
+## 뒤집은 형태의 그림(가로 , 세로 를 뒤집음) 
+mosaicplot(t(mytable2))
+
+## 요일별 tip   상자그림 (하나의 질적 변수와 하나의 양적 변수) 
+boxplot(tip~day, tips)
+
+## 두개의 양적 변수 그림 그리기 : 산점도
+plot(tip~total_bill, tips)
+
+
+## 등급별 도수분포표 
+myratingtable <- table(movie_data$rating)
+myratingtable
+
+barplot(myratingtable, las=2)
+
+lbl <- paste(names(myratingtable), ", ", (myratingtable / sum(myratingtable)) * 100,"%", sep="")
+lbl
+
+pie(myratingtable, lbl)
+
+head(movie_data)
+
+
+### 장르와 영화등급표를 통한 분할표 
+mygernerating <- xtabs(~rating+genre, movie_data)
+mygernerating
+max(mygernerating[,1])
+
+barplot(mygernerating, xlab="장르",beside=TRUE, main="장르별 영화등급표", legend.text = c("12세이상", "15세이상", "전체", "청소년관람불가"), args.legend = list(x="topleft"))
+
+mosaicplot(t(mygernerating))
+
+
+?barplot

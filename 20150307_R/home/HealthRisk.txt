@@ -1,0 +1,218 @@
+##				Prevalence of smoking		Incidence of tuberculosis	Prevalence of diabetes	Prevalence of HIV					Antiretroviral therapy coverage	Cause of death		
+Country	CountryCode	Region	OECD	MaleSmokingPrevPercAdult	FemaleSmokingPrevPercAdult	TuberculosisPer100K	DiabetesPrevPercPop	TotalHIVPrevPercPop1549		WomenHIVPrevPerc15Over	MaleYouthHIVPercPop	FemaleYouthHIVPercPop	AVTherapyCovPerc	CoDCommunicableDiseases	CoDNonCommunicableDiseases	CoDInjuries
+##				% of adults	% of adults	"per 100,000 people"	% of population ages 20 to 79	% of population ages 15-49		% Women's share of population ages 15+ living with HIV	% of population ages 15-24	% of population ages 15-24	% of people with advanced HIV infection	% of population	% of population	% of population
+##				2011	2011	2012	2013	1990	2012	2012	2012	2012	2012	2012	2012	2012
+Afghanistan	AFG	Asia:South				189	8.3	0.1	0.1	35	0.1	0.1	8	46	37	17
+Albania	ALB	Europe:East		48	5	16	2.5							5	90	6
+Algeria	DZA	Africa:North		28	2	89	7.5			65				15	77	8
+American Samoa	ASM	Polynesia				7										
+Andorra	ADO	Europe:South				13	5.5									
+Angola	AGO	Africa:Center				316	2.9	0.6	2.3	59	0.6	1.2	42	66	24	10
+Antigua and Barbuda	ATG	Caribbean				4	13.3									
+Argentina	ARG	America:South		30	16	25	5.7	0.1	0.4	33	0.2	0.1	81	11	81	7
+Armenia	ARM	Europe:East		47	2	52	2.5	0.1	0.2	18	0.1	0.1	35	4	92	4
+Aruba	ABW	Caribbean				16	13.6									
+Australia	AUS	Oceania	Y	21	19	7	7.8			22				4	91	6
+Austria	AUT	Europe:West	Y	46	47	8	6.6			22				3	92	5
+Azerbaijan	AZE	Europe:East		34	1	95	2.5	0.1	0.2	11	0.2	0.1	24	11	84	5
+"Bahamas, The"	BHS	Caribbean				10	14.2	1.9	3.3	51	1.3	1.8		20	72	8
+Bahrain	BHR	MiddleEast		35	8	20	21.8							11	78	12
+Bangladesh	BGD	Asia:South		48	2	225	6.3	0.1	0.1	35	0.1	0.1	27	32	59	9
+Barbados	BRB	Caribbean		13	2	2	12.4	0.2	0.9	26	0.4	0.2		11	84	5
+Belarus	BLR	Europe:East		50	11	70	5.1	0.1	0.4	31	0.3	0.2	45	2	89	9
+Belgium	BEL	Europe:West	Y	31	23	10	4.8			32				7	87	6
+Belize	BLZ	America:Center		22	2	40	15.9	0.2	1.4	47	0.5	0.6	71	19	65	16
+Benin	BEN	Africa:West		21	3	70	1.6	0.3	1.1	59	0.2	0.4	67	55	36	9
+Bermuda	BMU	Caribbean				5	12.8									
+Bhutan	BTN	Asia:South				180	5.8	0.1	0.2	26	0.1	0.1	12	24	56	19
+Bolivia	BOL	America:South		42	18	127	7.3	0.1	0.3	31	0.1	0.1	35	28	59	13
+Bosnia and Herzegovina	BIH	Europe:East		44	27	49	9.7							3	91	6
+Botswana	BWA	Africa:South		36	7	408	4.1	4.3	23	56	3.7	6.7	95	54	37	9
+Brazil	BRA	America:South		22	13	46	9.2			31				14	74	12
+Brunei Darussalam	BRN	Asia:SE		32	4	68	8.6							10	80	11
+Bulgaria	BGR	Europe:East		48	31	32	5.3			21				3	94	3
+Burkina Faso	BFA	Africa:West				54	3.8	3.3	1	59	0.4	0.5	70	58	32	10
+Burundi	BDI	Africa:East				130	4.5	1.7	1.3	60	0.4	0.6	58	60	28	11
+Cambodia	KHM	Asia:SE		42	3	411	3	0.1	0.8	55	0.2	0.2	84	37	52	11
+Cameroon	CMR	Africa:Center				238	5.9	0.5	4.5	58	1	1.8	45	61	31	9
+Canada	CAN	America:North	Y	20	15	5	7.9			20				5	88	6
+Cabo Verde	CPV	Africa:West		14	3	144	6.2	0.4	0.2	53	0.1	0.1	95	23	69	9
+Cayman Islands	CYM	Caribbean				12	14.3									
+Central African Republic	CAF	Africa:Center				367	6.3			59				73	20	7
+Chad	TCD	Africa:Center		20	4	151	5.2	1.7	2.7	59	0.6	1.1	40	72	21	7
+Channel Islands	CHI	Europe:North					5.5									
+Chile	CHL	America:South	Y	44	38	16	9.5	0.1	0.4	14	0.2	0.1	86	8	84	8
+China	CHN	Asia:East		47	2	73	9			29				5	87	8
+"Hong Kong SAR, China"	HKG	Asia:East				77	7.5									
+"Macao SAR, China"	MAC	Asia:East				83	9									
+Colombia	COL	America:South		31	5	33	7.3	0.1	0.5	30	0.3	0.2	55	13	69	18
+Comoros	COM	Africa:East		25	2	34	8.4	0.1	2.1	29	2.8	1.6	5	51	38	12
+"Congo, Dem. Rep."	ZAR	Africa:Center		16	5	327	6.1	1.3	1.1	59	0.4	0.8	31	67	23	10
+"Congo, Rep."	COG	Africa:Center		9	3	381	6.3	4.4	2.8	58	0.8	1.3	39	62	30	8
+Costa Rica	CRI	America:Center		24	8	11	7.1	0.1	0.3	42	0.1	0.2	74	7	83	11
+Cote d'Ivoire	CIV	Africa:West		16	9	172	6	2.3	3.2	57	0.7	1.2	49	61	31	9
+Croatia	HRV	Europe:East		36	30	14	5.6			16				1	93	6
+Cuba	CUB	Caribbean				9	8.1	0.1	0.1	17	0.1	0.1	95	6	86	8
+Curacao	CUW	Caribbean				1	14.5									
+Cyprus	CYP	MiddleEast		41	18	5	9.3							4	90	6
+Czech Republic	CZE	Europe:East	Y	40	32	5	6.9			15				5	90	6
+Denmark	DNK	Europe:North	Y	30	27	7	6.3			27				7	90	4
+Djibouti	DJI	Africa:East				620	6.8	0.1	1.2	58	0.2	0.3	31	55	36	9
+Dominica	DMA	Caribbean		11	4	13	10.9									
+Dominican Republic	DOM	Caribbean		17	16	62	11.4	0.5	0.7	53	0.1	0.2	77	17	70	13
+Ecuador	ECU	America:South				59	5.9	0.2	0.6	23	0.4	0.2	44	18	67	15
+"Egypt, Arab Rep."	EGY	Africa:North		46	1	17	16.8	0.1	0.1	22	0.1	0.1	37	11	85	5
+El Salvador	SLV	America:Center		24	3	25	10.5	0.3	0.6	38	0.3	0.2	50	14	64	23
+Equatorial Guinea	GNQ	Africa:Center				139	5.4	0.8	6.2	56	1.6	3.1		59	31	10
+Eritrea	ERI	Africa:East		13	1	93	5.2	1.2	0.7	60	0.2	0.2	73	52	37	12
+Estonia	EST	Europe:North	Y	43	21	23	5.7			31				2	92	5
+Ethiopia	ETH	Africa:East				247	4.9	1.3	1.3	64	0.3	0.5	60	60	31	10
+Faeroe Islands	FRO	Europe:North					5.5									
+Fiji	FJI	Melanesia				24	10.9	0.1	0.2	29	0.1	0.1	43	12	80	8
+Finland	FIN	Europe:North	Y	27	20	6	5.8			29				2	92	6
+France	FRA	Europe:West	Y	39	32	8	5.4			31				6	87	7
+French Polynesia	PYF	Polynesia				21	22.4									
+Gabon	GAB	Africa:Center		19	3	428	10.7	1	4	67	0.4	1.6	63	56	36	8
+"Gambia, The"	GMB	Africa:West		32	3	284	2	0.1	1.3	61	0.2	0.5	59	59	32	9
+Georgia	GEO	Europe:East		55	3	116	2.5	0.1	0.3	21	0.3	0.1	72	3	94	3
+Germany	DEU	Europe:West	Y	35	25	6	8.3			17				5	91	4
+Ghana	GHA	Africa:West		14	7	72	3.8	0.7	1.4	58	0.3	0.5	58	51	42	8
+Greece	GRC	Europe:South	Y	46	34	5	4.8			23				6	91	4
+Greenland	GRL	Europe:North				170										
+Grenada	GRD	Caribbean				4	9.4									
+Guam	GUM	Micronesia				48	19.5									
+Guatemala	GTM	America:Center		20	2	60	10.9	0.1	0.7	38	0.3	0.2	51	34	47	18
+Guinea	GIN	Africa:West		23	2	178	4.4	0.2	1.7	60	0.4	0.8	50	61	31	8
+Guinea-Bissau	GNB	Africa:West				242	3.8	0.2	3.9	58	0.9	1.7	37	64	28	8
+Guyana	GUY	America:South		27	6	109	15.9	0.1	1.3	52	0.5	0.8	93	18	67	16
+Haiti	HTI	Caribbean				213	6.7	3.8	2.1	59	0.6	0.9	60	43	48	9
+Honduras	HND	America:Center				54	7.7	0.8	0.5	41	0.2	0.2	58	23	61	16
+Hungary	HUN	Europe:East	Y	35	27	18	6			10				2	93	5
+Iceland	ISL	Europe:North	Y	19	18	4	3.2			29				4	90	6
+India	IND	Asia:South		25	4	176	9.1	0.1	0.3	39	0.1	0.1	50	28	60	12
+Indonesia	IDN	Asia:SE		67	3	185	5.8	0.1	0.4	40	0.4	0.5	17	22	71	7
+"Iran, Islamic Rep."	IRN	MiddleEast		26	1	21	9.9	0.1	0.2	27	0.1	0.1	13	10	76	14
+Iraq	IRQ	MiddleEast		31	4	45	9.5							19	62	19
+Ireland	IRL	Europe:West	Y			9	5.5			30				6	88	6
+Isle of Man	IMY	Europe:North														
+Israel	ISR	MiddleEast	Y	35	17	8	5.7			30				9	86	5
+Italy	ITA	Europe:South	Y	31	18	7	5.1			10				4	92	4
+Jamaica	JAM	Caribbean				7	10.4	1.6	1.7	33	0.9	0.5	69	14	79	7
+Japan	JPN	Asia:East	Y	34	11	19	5.1			15				13	80	7
+Jordan	JOR	MiddleEast		47	6	6	11.4							13	76	11
+Kazakhstan	KAZ	Asia:Center		40	9	137	5			41				6	84	11
+Kenya	KEN	Africa:East		26	1	272	4.6	2.5	6.1	57	1.8	3.6	73	64	27	10
+Kiribati	KIR	Micronesia		67	37	429	28.8									
+"Korea, Dem. Rep."	PRK	Asia:East				409	6.7			30				11	79	10
+"Korea, Rep."	KOR	Asia:East	Y			108	7.5			29				8	79	13
+Kosovo	KSV	Europe:East														
+Kuwait	KWT	MiddleEast		35	4	26	23.1							16	73	11
+Kyrgyz Republic	KGZ	Asia:Center		45	2	141	6.3	0.1	0.3	18	0.2	0.1	23	11	80	9
+Lao PDR	LAO	Asia:SE		48	4	204	5.5	0.1	0.3	46	0.2	0.2	51	43	48	9
+Latvia	LVA	Europe:East		46	20	53	4.6			31				2	93	5
+Lebanon	LBN	MiddleEast				16	15			30				6	85	9
+Lesotho	LSO	Africa:South				630	4.9	0.8	23.1	59	5.8	10.7	54	64	27	9
+Liberia	LBR	Africa:West		18	2	304	3.8	0.3	0.9	59	0.1	0.1	43	58	34	8
+Libya	LBY	Africa:North		45	1	40	9.9							10	78	12
+Liechtenstein	LIE	Europe:West					5.5									
+Lithuania	LTU	Europe:East		43	25	66	3.9			12				3	89	8
+Luxembourg	LUX	Europe:West	Y			7	4.6			31				6	87	7
+"Macedonia, FYR"	MKD	Europe:East				18	10							2	95	3
+Madagascar	MDG	Africa:East				234	3.8	0.2	0.5	46	0.3	0.3	1	51	39	10
+Malawi	MWI	Africa:East		23	5	163	5.5	11.6	10.8	58	2.7	4.5	69	65	28	7
+Malaysia	MYS	Asia:SE		43	1	80	10.9	0.1	0.4	15	0.1	0.1	42	16	73	11
+Maldives	MDV	Asia:South		42	7	41	4.8	0.1	0.1	31	0.1	0.1	26	12	81	7
+Mali	MLI	Africa:West		28	2	60	1.6	0.5	0.9	60	0.2	0.3	52	60	31	9
+Malta	MLT	Europe:South		31	20	11	6.6			30				5	92	4
+Marshall Islands	MHL	Micronesia		36	7	572	34.9									
+Mauritania	MRT	Africa:West		29	4	350	5	0.1	0.4	58	0.1	0.2	35	60	32	8
+Mauritius	MUS	Africa:East		39	5	21	14.8	0.1	1.2	27	0.3	0.3	36	8	85	6
+Mexico	MEX	America:North	Y	27	8	23	12.6	0.4	0.2	22	0.1	0.1	82	11	77	12
+"Micronesia, Fed. Sts."	FSM	Micronesia				194	35									
+Moldova	MDA	Europe:East		43	5	160	2.4	0.1	0.7	35	0.2	0.2	29	4	89	7
+Monaco	MCO	Europe:West				2	5.5									
+Mongolia	MNG	Asia:East		48	6	223	7.8	0.1	0.1	50	0.1	0.1	5	11	79	10
+Montenegro	MNE	Europe:East				18	10.1							2	92	5
+Morocco	MAR	Africa:North		32	2	103	7.8	0.1	0.1	38	0.1	0.1	49	18	75	7
+Mozambique	MOZ	Africa:East				552	2.8	0.6	11.1	59	2.8	6.6	45	66	23	11
+Myanmar	MMR	Asia:SE		38	7	377	6.1	0.2	0.6	34	0.1	0.1	48	30	59	11
+Namibia	NAM	Africa:South		30	9	655	6.3	1.1	13.3	58	2.2	4.1	90	47	43	10
+Nepal	NPL	Asia:South		37	25	163	4.9	0.1	0.3	32	0.1	0.1	33	30	60	11
+Netherlands	NLD	Europe:West	Y	29	23	6	5.2			15				6	89	4
+New Caledonia	NCL	Melanesia				17	19.5									
+New Zealand	NZL	Oceania	Y	21	19	8	9			23				5	89	7
+Nicaragua	NIC	America:Center				38	12.5	0.1	0.3	31	0.3	0.2	72	15	73	12
+Niger	NER	Africa:West		9	1	104	4.2	0.2	0.5	55	0.1	0.1	46	68	25	8
+Nigeria	NGA	Africa:West		10	2	108	5.8	0.8	3.1	58	0.7	1.3	32	66	24	10
+Northern Mariana Islands	MNP	Micronesia				69										
+Norway	NOR	Europe:North	Y	28	26	8	4.7			29				8	87	5
+Oman	OMN	MiddleEast		13	1	13	14.2			26				17	68	15
+Pakistan	PAK	Asia:South		38	7	231	7.9	0.1	0.1	28	0.1	0.1	14	38	51	11
+Palau	PLW	Micronesia				24	18.4									
+Panama	PAN	America:Center		23	4	48	8.1	1.1	0.7	31	0.4	0.3	76	17	70	13
+Papua New Guinea	PNG	Melanesia		55	27	348	6.7	0.1	0.5	57	0.1	0.1	79	48	42	10
+Paraguay	PRY	America:South		30	8	45	7	0.1	0.3	43	0.2	0.3	73	15	72	13
+Peru	PER	America:South				95	4.5	0.6	0.4	32	0.2	0.2	59	24	66	10
+Philippines	PHL	Asia:SE		44	10	265	6.9	0.1	0.1	15	0.1	0.1	73	25	67	8
+Poland	POL	Europe:East	Y	38	27	21	5.2			20				3	90	7
+Portugal	PRT	Europe:South	Y	30	15	26	9.6			30				10	86	4
+Puerto Rico	PRI	Caribbean				2	13									
+Qatar	QAT	MiddleEast				41	22.9							8	69	23
+Romania	ROM	Europe:East		38	18	94	4			30				4	92	4
+Russian Federation	RUS	Europe:East		59	25	91	8.3			32				6	86	8
+Rwanda	RWA	Africa:East				86	5	5.3	2.9	58	1	1.3	87	52	36	13
+Samoa	WSM	Polynesia				18	7.7									
+San Marino	SMR	Europe:South				2	5.5									
+Sao Tome and Principe	STP	Africa:Center		8	3	93	6.3	0.1	1	53	0.3	0.4	44			
+Saudi Arabia	SAU	MiddleEast		38	1	15	23.9							13	78	9
+Senegal	SEN	Africa:West		16	1	137	3.8	0.1	0.5	65	0.1	0.3	62	57	34	9
+Serbia	SRB	Europe:East		38	27	23	9.9			23				2	95	4
+Seychelles	SYC	Africa:East		31	8	30	12.1									
+Sierra Leone	SLE	Africa:West		48	20	674	3.8	0.1	1.5	60	0.3	1	33	66	26	8
+Singapore	SGP	Asia:SE				50	10.4			30				19	76	5
+Sint Maarten (Dutch part)	SXM	Caribbean				3	14.2									
+Slovak Republic	SVK	Europe:East	Y	39	19	7	7.9			9				5	90	5
+Slovenia	SVN	Europe:East	Y	28	21	8	7.5			9				4	88	8
+Solomon Islands	SLB	Melanesia		45	18	97	15.6							30	60	10
+Somalia	SOM	Africa:East				286	6.3	0.1	0.5	51	0.2	0.2	12	69	19	12
+South Africa	ZAF	Africa:South		28	8	1003	9.3	0.2	17.9	59	3.9	13.9	80	49	43	8
+South Sudan	SSD	Africa:East				146	9.1	0.1	2.7	58	0.6	1.2	8	63	26	10
+Spain	ESP	Europe:South	Y	33	27	14	8.2			23				5	92	3
+Sri Lanka	LKA	Asia:South		31	1	66	7.6	0.1	0.1	33	0.1	0.1	34	11	75	14
+St. Kitts and Nevis	KNA	Caribbean		12	3	4	13									
+St. Lucia	LCA	Caribbean				3	8.2									
+St. Martin (French part)	MAF	Caribbean														
+St. Vincent and the Grenadines	VCT	Caribbean				24	10									
+Sudan	SDN	Africa:North				114	9.6			51				53	34	13
+Suriname	SUR	America:South				41	11.1	0.3	1.1	52	0.4	0.7	66	17	68	15
+Swaziland	SWZ	Africa:South		16	2	1349	4.6	0.8	26.5	59	10.3	20	82	63	28	9
+Sweden	SWE	Europe:North	Y	25	24	7	4.7			30				5	90	5
+Switzerland	CHE	Europe:West	Y	31	22	6	5.9			30				4	91	6
+Syrian Arab Republic	SYR	MiddleEast				18	8.9							6	46	48
+Tajikistan	TJK	Asia:Center				193	6.5	0.1	0.3	36	0.1	0.1	28	30	62	8
+Tanzania	TZA	Africa:East				165	9	5	5.1	59	1.8	3.6	61	58	31	12
+Thailand	THA	Asia:SE		46	3	119	5.7	0.8	1.1	45	0.3	0.3	76	18	71	11
+Timor-Leste	TMP	Asia:SE				498	7							47	44	9
+Togo	TGO	Africa:West		14	2	73	4.8	0.8	2.9	59	0.5	0.9	46	62	30	8
+Tonga	TON	Polynesia		43	12	14	14.1									
+Trinidad and Tobago	TTO	Caribbean				24	13	0.4	1.6	52	0.6	0.9		9	80	11
+Tunisia	TUN	Africa:North		52	11	31	9.4	0.1	0.1	32	0.1	0.1	55	11	82	7
+Turkey	TUR	MiddleEast	Y	42	13	22	14.9			30				7	86	7
+Turkmenistan	TKM	Asia:Center				75	5							13	76	11
+Turks and Caicos Islands	TCA	Caribbean				28										
+Tuvalu	TUV	Polynesia				241	14.5									
+Uganda	UGA	Africa:East		16	3	179	4.8	12.3	7.2	57	2.3	4	64	60	27	13
+Ukraine	UKR	Europe:East		49	14	93	2.5	0.1	0.9	42	0.4	0.5	41	5	90	5
+United Arab Emirates	ARE	MiddleEast				2	19							12	65	23
+United Kingdom	GBR	Europe:West	Y	22	22	15	4.9			31				7	89	4
+United States	USA	America:North	Y			4	9.2			20				6	88	6
+Uruguay	URY	America:South		29	21	27	5.6	0.1	0.7	21	0.5	0.2	65	8	85	7
+Uzbekistan	UZB	Asia:Center		22	3	78	6.4	0.1	0.1	26	0.1	0.1	43	14	79	7
+Vanuatu	VUT	Melanesia		43	8	65	24									
+"Venezuela, RB"	VEN	America:South				33	7	0.4	0.6	37	0.3	0.3	71	11	67	22
+Vietnam	VNM	Asia:SE		46	2	147	5.8	0.1	0.4	28	0.2	0.1	58	17	73	11
+Virgin Islands (U.S.)	VIR	Caribbean				8	12.1									
+West Bank and Gaza	WBG	MiddleEast		39	3	8	9.1									
+"Yemen, Rep."	YEM	MiddleEast		35	11	49	8.5	0.1	0.1	43	0.1	0.1	14	50	39	11
+Zambia	ZMB	Africa:East		24	4	427	3.8	10.4	12.7	52	3.5	4.6	79	67	23	11
+Zimbabwe	ZWE	Africa:East		25	1	562	9.7	10.7	14.7	59	3.9	6.3	79	62	31	8

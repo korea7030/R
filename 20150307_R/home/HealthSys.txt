@@ -1,0 +1,218 @@
+##				Health expenditure						Health workers			Hospital beds	Completeness of birth registration
+Country	CountryCode	Region	OECD	TotalHealthExpensePercGDP	PublicHealthExpensePercTotal	OutOfPocketPercTotal	HealthExpenseExternalResources	HealthExpensePerCapitaDollar	HealthExpensePerCapitaPPPDollar	PhysiciansPer1000	NursesMidwivesPer1000	CommunityHealthWorkersPer1000	HealthBedsPer1000	BirthRegistrationPerc
+##				% of GDP	% of total	% of total	% of total	$	PPP $	per 1000 people	per 1000 people	per 1000 people	per 1000 people	%
+##				2012	2012	2012	2012	2012	2012	2007-2012	2007-2012	2007-2012	2007-2012	2007-2012
+Afghanistan	AFG	Asia:South		8.6	20.8	74.4	21.7	51	47	0.2	0.1		0.5	37
+Albania	ALB	Europe:East		6	47.6	52.2	3.7	228	541	1.1	4		2.6	99
+Algeria	DZA	Africa:North		5.2	84.1	15	0	279	439	1.2	1.9			
+American Samoa	ASM	Polynesia												
+Andorra	ADO	Europe:South		8.3	76.6	17.5	0	3057	3499	3.9	4.6		2.5	100
+Angola	AGO	Africa:Center		3.5	62.2	26.7	1.7	190	212	0.2	1.7			
+Antigua and Barbuda	ATG	Caribbean		5.2	75.4	22.2	3.6	681	1029				2.1	
+Argentina	ARG	America:South		8.5	69.2	20.1	0.7	995	1551	3.2			4.7	99
+Armenia	ARM	Europe:East		4.5	41.8	54.6	6.4	150	299	2.7	4.9		3.9	100
+Aruba	ABW	Caribbean												
+Australia	AUS	Oceania	Y	9.1	66.9	18.5		6140	4068	3.3	10.6		3.9	100
+Austria	AUT	Europe:West	Y	11.5	75.5	15.2		5407	5065	4.8	7.9		7.6	100
+Azerbaijan	AZE	Europe:East		5.4	22.8	69	1	398	572	3.4	6.7		4.7	
+Bahamas The	BHS	Caribbean		7.5	46.1	29.1		1647	2377	2.8	4.1		2.9	
+Bahrain	BHR	MiddleEast		3.9	71.9	16.5	0	895	971	0.9	2.4		2.1	
+Bangladesh	BGD	Asia:South		3.6	34.4	63.3	7.2	26	68	0.4	0.2	0.3	0.6	31
+Barbados	BRB	Caribbean		6.3	65.6	34.4	2.3	938	1307	1.8	4.9		6.2	
+Belarus	BLR	Europe:East		5	77.2	19.5	0.4	339	790	3.8	10.5		11.3	100
+Belgium	BEL	Europe:West	Y	10.8	75.9	19.7		4711	4320	3	15.8		6.5	100
+Belize	BLZ	America:Center		5.8	64.9	24.5	1.2	259	458	0.8	2	0.5	1.1	95
+Benin	BEN	Africa:West		4.5	51.5	44.3	32	33	70	0.1	0.8		0.5	80
+Bermuda	BMU	Caribbean												
+Bhutan	BTN	Asia:South		3.8	83.9	15.2	11.6	90	253	0.3	1	0.1	1.8	100
+Bolivia	BOL	America:South		5.8	71.8	23.2	3.8	149	305	0.5	1		1.1	76
+Bosnia and Herzegovina	BIH	Europe:East		9.9	71.1	27.8	1.6	447	928	1.7	5.2		3.5	
+Botswana	BWA	Africa:South		5.3	56.4	5.5	15.6	384	872	0.3	2.8		1.8	72
+Brazil	BRA	America:South		9.3	46.4	31	0.1	1056	1109	1.8	6.4		2.3	93
+Brunei Darussalam	BRN	Asia:SE		2.3	91.8	8.1		939	1218	1.5	7.7		2.8	
+Bulgaria	BGR	Europe:East		7.4	56.3	42.3		516	1177	3.8	4.7		6.4	100
+Burkina Faso	BFA	Africa:West		6.2	54.3	36.4	31.4	38	90	0	0.6	0.1	0.4	77
+Burundi	BDI	Africa:East		8.1	59.5	28.3	46.3	20	45				1.9	75
+Cabo Verde	KHM	Asia:SE		3.9	77.4	21.2	28.3	144	166	0.3	0.5		2.1	91
+Cambodia	CMR	Africa:Center		5.4	24.7	61.7	15.3	51	135	0.2	0.9		0.7	62
+Cameroon	CAN	America:North	Y	5.1	33.5	62.6	9.3	59	120	0.1	0.4		1.3	61
+Canada	CPV	Africa:West		10.9	70.1	15		5741	4676	2.1	9.3		2.7	100
+Cayman Islands	CYM	Caribbean												
+Central African Republic	CAF	Africa:Center		3.8	49.7	45.6	28.6	18	32	0	0.3	0.4	1	61
+Chad	TCD	Africa:Center		2.8	31.3	66.4	14.7	25	42					16
+Channel Islands	CHI	Europe:North												
+Chile	CHL	America:South	Y	7.2	48.6	32.1	0	1103	1606	1	0.1		2.1	100
+China	CHN	Asia:East		5.4	56	34.3	0.1	322	480	1.9	1.9	0.8	3.8	
+Hong Kong SAR China	HKG	Asia:East												
+Macao SAR China	MAC	Asia:East												
+Colombia	COL	America:South		6.8	75.8	14.8	0.6	530	723	1.5	0.6		1.5	97
+Comoros	COM	Africa:East		4.5	55.9	44.1	26.9	38	56					
+Congo Dem. Rep.	ZAR	Africa:Center		5.6	51.4	32.5	50.4	15	24					28
+Congo Rep.	COG	Africa:Center		3.2	73.9	25.1	7.7	100	140	0.1	0.8			91
+Costa Rica	CRI	America:Center		10.1	74.6	23.1	0.1	951	1311				1.2	
+Cote d'Ivoire	CIV	Africa:West		7.1	27.5	55.8	8.7	88	144	0.1	0.5			65
+Croatia	HRV	Europe:East		6.8	82.3	13.9	0	908	1410	3	5.3		5.9	
+Cuba	CUB	Caribbean		8.6	94.2	5.8	0.2	558	405	6.7	9.1		5.3	100
+Curacao	CUW	Caribbean												
+Cyprus	CYP	MiddleEast		7.3	43.1	49.5		1949	2266	2.3	4.5		3.5	100
+Czech Republic	CZE	Europe:East	Y	7.7	84.8	14.2		1432	2046	3.6	8.4		6.8	100
+Denmark	DNK	Europe:North	Y	11.2	85.5	12.6	0	6304	4720	3.4	16.1		3.5	100
+Djibouti	DJI	Africa:East		8.8	59.7	40	12.7	129	231	0.2	0.8		1.4	
+Dominica	DMA	Caribbean		5.9	72	23.7	4	392	740				3.8	
+Dominican Republic	DOM	Caribbean		5.4	50.9	38.7	4.7	310	553	1.5	1.3		1.7	82
+Ecuador	ECU	America:South		6.4	44.8	51.4	0.4	361	652	1.7	2		1.6	90
+Egypt Arab Rep.	EGY	Africa:North		5	39	59.6	0.4	152	323	2.8	3.5		0.5	
+El Salvador	SLV	America:Center		6.7	62.8	32.4	1.4	254	475	1.6	0.4		1.1	99
+Equatorial Guinea	GNQ	Africa:Center		4.7	54.3	43.5	1.1	1138	1432				2.1	
+Eritrea	ERI	Africa:East		2.6	47.5	52.5	24.7	15	17				0.7	
+Estonia	EST	Europe:North	Y	5.9	79.9	18.4	0.9	1010	1385	3.3	6.5		5.3	100
+Ethiopia	ETH	Africa:East		3.8	48.4	41.2	50.3	18	44	0	0.2	0.4	6.3	
+Faeroe Islands	FRO	Europe:North												
+Fiji	FJI	Melanesia		4	64.9	22.5	7.3	177	197	0.4	2.2		2	
+Finland	FIN	Europe:North	Y	9.1	75.4	18.6	0	4232	3545	2.9	10.8		5.5	100
+France	FRA	Europe:West	Y	11.7	76.9	7.4		4690	4260	3.2	9.3		6.4	100
+French Polynesia	PYF	Polynesia												
+Gabon	GAB	Africa:Center		3.5	51.2	41.4	1.3	397	558				6.3	90
+Gambia The	GMB	Africa:West		5	66	16.3	49.2	26	98	0	0.6	0.7	1.1	53
+Georgia	GEO	Europe:East		9.2	18	64.7	3	333	561	4.2	0.2		2.6	99
+Germany	DEU	Europe:West	Y	11.3	76.3	12.1		4683	4617	3.8	11.5		8.2	100
+Ghana	GHA	Africa:West		5.2	57.1	28.7	10.9	83	106	0.1	0.9	0.2	0.9	63
+Greece	GRC	Europe:South	Y	9.3	67.5	29.7		2044	2346	6.2	0.2		4.8	100
+Greenland	GRL	Europe:North												
+Grenada	GRD	Caribbean		6.4	46.6	52.2	0.7	478	691				3.5	
+Guam	GUM	Micronesia												
+Guatemala	GTM	America:Center		6.7	35.6	53.3	2.6	226	346	0.9	0.9		0.6	97
+Guinea	GIN	Africa:West		6.3	28.1	66.6	10.3	32	67	0.1	0		0.3	
+Guinea-Bissau	GNB	Africa:West		5.9	22.7	43.2	34.5	30	66	0	0.6		1	24
+Guyana	GUY	America:South		6.6	66.1	31.3	10.9	235	223	0.2	0.5	0.3	2	88
+Haiti	HTI	Caribbean		6.4	22.8	3.5	66.9	53	84				1.3	80
+Honduras	HND	America:Center		8.6	50.3	45.6	3.6	195	354				0.7	94
+Hungary	HUN	Europe:East	Y	7.8	63.6	27.1		987	1729	3	6.4		7.2	100
+Iceland	ISL	Europe:North	Y	9.1	80.7	17.9		3872	3436	3.5	15.6		3.2	100
+India	IND	Asia:South		4	33.1	57.6	1.2	61	157	0.7	1.7		0.7	
+Indonesia	IDN	Asia:SE		3	39.6	45.3	1.1	108	150	0.2	1.4		0.9	67
+Iran Islamic Rep.	IRN	MiddleEast		6.7	40.4	52.5	0	490	1562	0.9	1.4		0.1	99
+Iraq	IRQ	MiddleEast		3.6	53.6	46.4	0.3	226	149	0.6	1.4		1.3	99
+Ireland	IRL	Europe:West	Y	8.1	64.4	15		3708	3529	2.7	15.7		2.9	100
+Isle of Man	IMY	Europe:North												
+Israel	ISR	MiddleEast	Y	7.5	61.7	25	1.5	2289	2239	3.3	4.9		3.3	100
+Italy	ITA	Europe:South	Y	9.2	78.2	20.2		3032	3040	4.1	0.3		3.4	100
+Jamaica	JAM	Caribbean		5.9	54.9	28.9	1.7	318	461	0.4	1.1	0.3	1.7	98
+Japan	JPN	Asia:East	Y	10.1	82.5	14.1	0	4752	3578	2.3	11.5		13.7	100
+Jordan	JOR	MiddleEast		9.8	63.1	28.5	4.2	388	483	2.6	4		1.8	99
+Kazakhstan	KAZ	Asia:Center		4.2	57.8	41.7	0.4	521	608	3.6	8.2		7.2	100
+Kenya	KEN	Africa:East		4.7	38.1	47.6	42.3	45	84	0.2	0.8		1.4	60
+Kiribati	KIR	Micronesia		10.7	82.6	0.1	6.3	187	264	0.4	3.7		1.3	94
+Korea Dem. Rep.	PRK	Asia:East											13.2	100
+Korea Rep.	KOR	Asia:East	Y	7.5	54.4	36.1		1703	2321	2.1	5		10.3	
+Kosovo	KSV	Europe:East												
+Kuwait	KWT	MiddleEast		2.5	82.5	15.8	0	1428	1377	1.8	4.6		2.2	
+Kyrgyz Republic	KGZ	Asia:Center		7.1	60.1	34.8	12.2	84	175	2	6.1		4.8	
+Lao PDR	LAO	Asia:SE		2.9	51.2	38.2	22.1	40	84	0.2	0.9		1.5	75
+Latvia	LVA	Europe:East		6	56.7	37.4		792	1188	2.9	4.7		5.9	100
+Lebanon	LBN	MiddleEast		7.6	37.9	44.8	0.7	675	1016	3.2	2.7		3.5	100
+Lesotho	LSO	Africa:South		11.6	78.6	14.8	30.1	138	227					45
+Liberia	LBR	Africa:West		15.5	29.8	21.2	34.6	65	102	0	0.3		0.8	4
+Libya	LBY	Africa:North		3.9	77.3	22.7	0.1	578	439	1.9	6.8		3.7	
+Liechtenstein	LIE	Europe:West												100
+Lithuania	LTU	Europe:East		6.7	70.8	28.5	3.3	859	1426	4.1	7.2		7	100
+Luxembourg	LUX	Europe:West	Y	6.9	84.5	11.2		7452	6341	2.8	12.5		5.4	100
+Macedonia FYR	MKD	Europe:East		7.1	64.1	35.9	1.1	327	835	2.6	0.6		4.5	100
+Madagascar	MDG	Africa:East		4.1	60.8	31.5	20.9	18	40	0.2			0.2	80
+Malawi	MWI	Africa:East		9.2	76.5	12.6	53.6	25	83	0	0.3	0.7	1.3	
+Malaysia	MYS	Asia:SE		3.9	55	35.6	0	410	676	1.2	3.3		1.9	
+Maldives	MDV	Asia:South		8.5	45.3	48.3	1.3	558	771	1.4	5	1.4	4.3	93
+Mali	MLI	Africa:West		5.8	39	60.7	31.5	42	74	0.1	0.4	0	0.1	81
+Malta	MLT	Europe:South		9.1	65.6	32.3		1835	2548	3.5	7.1		4.8	100
+Marshall Islands	MHL	Micronesia		15.6	82.6	13.1	35.6	590	418	0.4	1.7		2.7	96
+Mauritania	MRT	Africa:West		6.4	63.9	34.1	8.2	52	122	0.1	0.7			59
+Mauritius	MUS	Africa:East		4.8	48.9	46.8	4.5	444	784				3.4	
+Mexico	MEX	America:North	Y	6.1	51.8	44.1	0.6	618	1062	2.1	2.5		1.5	93
+Micronesia Fed. Sts.	FSM	Micronesia		12.8	90.3	9.5	70.2	405	489	0.2	3.3	0.3	3.2	
+Moldova	MDA	Europe:East		11.7	45.5	45.3	7.3	239	490	2.9	6.5		6.2	100
+Monaco	MCO	Europe:West		4.4	88.6	7		6708	6026	7.2	17.2		13.8	
+Mongolia	MNG	Asia:East		6.3	62.8	34.6	4	232	345	2.8	3.5	0	6.8	99
+Montenegro	MNE	Europe:East		7.6	59.7	36.7	1.3	493	1019	2	5.2		4	
+Morocco	MAR	Africa:North		6.4	33.5	58.8	0.3	190	340	0.6	0.9		0.9	94
+Mozambique	MOZ	Africa:East		6.4	44.3	5	55.7	37	66	0	0.4		0.7	48
+Myanmar	MMR	Asia:SE		1.8	23.9	71.3	8.1	20	25	0.6	1	0.1		72
+Namibia	NAM	Africa:South		8.3	61.7	6.9	8	473	619	0.4	2.8		2.7	78
+Nepal	NPL	Asia:South		5.5	39.5	49.2	18.5	36	80					42
+Netherlands	NLD	Europe:West	Y	12.4	79.8	5.6		5737	5385	2.9	8.4		4.7	100
+New Caledonia	NCL	Melanesia												
+New Zealand	NZL	Oceania	Y	10.3	82.7	10.9		3292	3292	2.7	10.9		2.3	100
+Nicaragua	NIC	America:Center		8.2	54.3	39.1	11.2	144	335				0.9	85
+Niger	NER	Africa:West		7.2	39.7	53.1	20.1	25	44	0	0.1			
+Nigeria	NGA	Africa:West		6.1	31.1	65.9	5.3	94	161	0.4	1.6	0.1		42
+Northern Mariana Islands	MNP	Micronesia												
+Norway	NOR	Europe:North	Y	9	85.1	13.4		9055	5970	3.7	13.4		3.3	100
+Oman	OMN	MiddleEast		2.6	80.4	12	0	690	810	2.2	5		1.7	
+Pakistan	PAK	Asia:South		3.1	31.4	61.9	4	39	91	0.8	0.6	0.1	0.6	27
+Palau	PLW	Micronesia		9.5	77.1	10.6	35.2	972	1680	1.4	5.7		4.8	
+Panama	PAN	America:Center		7.6	68.6	24.8	0.3	723	1260	1.6	2.4		2.2	
+Papua New Guinea	PNG	Melanesia		5.2	83.1	9.5	21.6	114	151	0.1	0.5	0.6		
+Paraguay	PRY	America:South		10.3	42	53.3	2.6	392	633				1.3	76
+Peru	PER	America:South		5.1	58.9	35.7	0.5	337	555	1.1	1.5		1.5	96
+Philippines	PHL	Asia:SE		4.6	37.7	52	1.8	119	203				1	90
+Poland	POL	Europe:East	Y	6.7	70.1	22.8	0.1	854	1489	2.2	5.8		6.5	100
+Portugal	PRT	Europe:South	Y	9.4	62.6	31.7		1905	2400	3.9	5.3		3.4	100
+Puerto Rico	PRI	Caribbean												
+Qatar	QAT	MiddleEast		2.2	83.6	8.5	0	2029	1805	7.7	11.9		1.2	
+Romania	ROM	Europe:East		5.1	77.7	21.8	0.1	420	873	2.4	5.5		6.1	
+Russian Federation	RUS	Europe:East		6.3	61	34.3		887	1474	4.3	8.5			100
+Rwanda	RWA	Africa:East		10.7	57.3	21.1	46.6	66	144	0.1	0.7		1.6	63
+Samoa	WSM	Polynesia		6.8	88.3	7.3	19.9	245	308	0.5	1.9			48
+San Marino	SMR	Europe:South		6.5	87.2	12.3	0	3792	3736	5.1	8.9		3.8	100
+Sao Tome and Principe	STP	Africa:Center		7.9	31.7	51.5	43	109	144				2.9	75
+Saudi Arabia	SAU	MiddleEast		3.2	65.8	18.7	0	795	1004	0.9	2.1		2.1	
+Senegal	SEN	Africa:West		5	55.9	34.1	19.1	51	96	0.1	0.4		0.3	75
+Serbia	SRB	Europe:East		10.5	61.2	37.1	0.4	561	1250	2.1	4.5		5.4	99
+Seychelles	SYC	Africa:East		4.7	93.3	2.4	7.6	521	1197				3.6	
+Sierra Leone	SLE	Africa:West		15.1	16.6	76.2	13.2	96	205	0	0.2	0		78
+Singapore	SGP	Asia:SE		4.7	37.6	58.6	0	2426	2881	1.9	6.4		2	
+Sint Maarten (Dutch part)	SXM	Caribbean												
+Slovak Republic	SVK	Europe:East	Y	7.8	70.5	22.8		1326	1977	3	0.3		6	100
+Slovenia	SVN	Europe:East	Y	8.8	73.3	11.9		1942	2420	2.5	8.5		4.6	100
+Solomon Islands	SLB	Melanesia		8	96.2	2.2	52.3	148	252	0.2	2.1		1.3	80
+Somalia	SOM	Africa:East								0	0.1			
+South Africa	ZAF	Africa:South		8.8	47.9	7.2	1.7	645	982	0.8	4.9			95
+South Sudan	SSD	Africa:East		2.6	38.7	56.7	30.1	27	33					35
+Spain	ESP	Europe:South	Y	9.6	73.6	20.3		2808	3145	3.7	5.1		3.1	100
+Sri Lanka	LKA	Asia:South		3.1	39.8	49.9	1.9	89	189	0.7	1.6		3.6	97
+St. Kitts and Nevis	KNA	Caribbean		5.9	39.3	55.2	2.5	825	1065				2.3	
+St. Lucia	LCA	Caribbean		8.5	55.2	44.3	3.7	556	945				1.6	
+St. Martin (French part)	MAF	Caribbean												
+St. Vincent and the Grenadines	VCT	Caribbean		5.2	82.1	17.9	3	340	573				5.2	
+Sudan	SDN	Africa:North		7.2	23.4	73.7	2.1	115	159	0.3	0.8		0.8	59
+Suriname	SUR	America:South		5.9	57	10.1	4.5	521	521				3.1	99
+Swaziland	SWZ	Africa:South		8.5	74.1	10.9	22	259	447	0.2	1.6		2.1	50
+Sweden	SWE	Europe:North	Y	9.6	81.7	16.1	0	5319	4158	3.8	11.9		2.7	100
+Switzerland	CHE	Europe:West	Y	11.3	61.7	28.1	0	8980	6062	3.9	17.4		5	100
+Syrian Arab Republic	SYR	MiddleEast		3.4	46.1	53.9	0.9	105	196	1.5	1.9		1.5	
+Tajikistan	TJK	Asia:Center		5.8	29.6	60	9	55	129	1.9	4.5		5.5	88
+Tanzania	TZA	Africa:East		7	39.3	31.8	37.7	41	109	0	0.2		0.7	16
+Thailand	THA	Asia:SE		3.9	76.4	13.1	0.6	215	385	0.4	2.1		2.1	
+Timor-Leste	TMP	Asia:SE		4.3	73.8	4	45.4	50	80	0.1	1.1		5.9	55
+Togo	TGO	Africa:West		8.6	51.4	41.1	18.1	41	75	0.1	0.3		0.7	78
+Tonga	TON	Polynesia		5.4	84	10.9	19.4	238	270	0.6	3.9		2.6	
+Trinidad and Tobago	TTO	Caribbean		5.4	50.4	42	1	972	1450	1.2	3.6		2.7	
+Tunisia	TUN	Africa:North		7	59	35.5	0.4	297	686	1.2	3.3		2.1	99
+Turkey	TUR	MiddleEast	Y	6.3	73.9	16.8	0.2	665	1144	1.7	2.4		2.5	94
+Turkmenistan	TKM	Asia:Center		2	63.2	36.8	1.1	129	209	2.4	4.4		4	
+Turks and Caicos Islands	TCA	Caribbean												
+Tuvalu	TUV	Polynesia		15.4	99.9	0.1	11.6	577	433	1.1	5.8			50
+Uganda	UGA	Africa:East		8	23.9	49.3	28.6	44	108	0.1	1.3		0.5	30
+Ukraine	UKR	Europe:East		7.6	54.9	42.4	0.6	293	562	3.5	7.6		9	100
+United Arab Emirates	ARE	MiddleEast		2.8	67.7	20.4	0	1343	1355	1.9	4.1		1.1	100
+United Kingdom	GBR	Europe:West	Y	9.4	82.5	9.9		3647	3495	2.8	8.8		2.9	100
+United States	USA	America:North	Y	17.9	46.4	11.1		8895	8895	2.5	9.8		2.9	100
+Uruguay	URY	America:South		8.9	66.6	16.5	0.1	1308	1427	3.7	5.5		2.5	100
+Uzbekistan	UZB	Asia:Center		5.9	53.1	44.1	1.5	105	221	2.4	12		4.4	
+Vanuatu	VUT	Melanesia		3.6	86.6	7.6	28.6	116	167	0.1	1.7	0.9	1.8	43
+Venezuela RB	VEN	America:South		4.6	33.7	63.7	0	593	628				0.9	81
+Vietnam	VNM	Asia:SE		6.6	42.6	48.8	2.4	102	233	1.2	1.1		2	95
+Virgin Islands (U.S.)	VIR	Caribbean												
+West Bank and Gaza	WBG	MiddleEast												99
+Yemen Rep.	YEM	MiddleEast		5.5	27.3	71.7	3.7	71	118	0.2	0.7	0	0.7	17
+Zambia	ZMB	Africa:East		6.5	64.1	23.9	32.3	96	112	0.1	0.8	0.3	2	14
+Zimbabwe	ZWE	Africa:East								0.1	1.3		1.7	49

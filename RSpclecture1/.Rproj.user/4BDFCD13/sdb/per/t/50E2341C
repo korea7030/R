@@ -1,0 +1,17 @@
+{
+    "contents" : "\"\",\"v1\"\n\"1\",1\n\"2\",3\n\"3\",5\n\"4\",7\n\"5\",9\n\"6\",11\n\"7\",20\n",
+    "created" : 1435976289824.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1638534274",
+    "id" : "50E2341C",
+    "lastKnownWriteTime" : 1435976768,
+    "path" : "C:/RCodeRepositories/RSpclecture1/v4.csv",
+    "project_path" : "v4.csv",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "text"
+}

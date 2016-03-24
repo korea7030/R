@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1429533918550.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4D6BC9C9",
+    "lastKnownWriteTime" : 7741240722073845761,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "Q32014",
+        "contentUrl" : "content?title=Q32014&file=de906a7f776d49ffb5334853b7ad9627.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 10,
+        "totalObservations" : 1500,
+        "variables" : 10
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
