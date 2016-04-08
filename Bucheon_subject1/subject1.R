@@ -49,7 +49,7 @@ getJobYnData_Matrix <- function(mainData,  Job) {
 
 # graph 출력
 printSNAPlot <- function(mat_dat,title) {
-  jpeg(paste0(title,".jpeg"), width = 800, height = 600) # jpeg 저장위한 코드
+  png(paste0(title,".png"), width = 800, height = 600, res=85) # jpeg 저장위한 코드
   # pdf.options(family = "Korea1deb")
   g<- graph.data.frame(mat_dat, directed = FALSE) # 방향성 확인하시려면 directed 를 TRUE로 하시면 됩니다.
   g<- simplify(g) # 자기자신을 가르키는 것 제외
@@ -63,8 +63,8 @@ printSNAPlot <- function(mat_dat,title) {
   btw.colors <- rev(heat.colors(max(btw.score))) # 색깔 지정
   V(g)$color <- btw.colors[btw.score] # 색깔 넣기
   
-  # V(g)$size <- degree(g) # SNA package 차수
-  V(g)$size <- btw # SNA package 차수 # node의 크기를 중개중심성 점수로 대입
+  V(g)$size <- degree(g) # SNA package 차수
+  # V(g)$size <- btw # SNA package 차수 # node의 크기를 중개중심성 점수로 대입
   # print(V(g)$size)
   V(g)$label.cex <- degree(g) / max(degree(g)) + 0.3 # label 크기 지정
   set.seed(1234) # 일정한 graph를 그리기 위한 seed값 지정
@@ -385,14 +385,10 @@ printSNAPlot(jobemp_science_jobY_mat, "취업지원-취업_자연과학계열")
 
 jobemp_engineer_jobN_mat <- getSeriesJobYnData_Matrix(jobemp_data, engineer, jobN)
 printSNAPlot(jobemp_engineer_jobN_mat, "취업지원-미취업_공학계열")
-printSNAPlot2(jobemp_engineer_jobN_mat, "취업지원-미취업_공학계열")
 jobemp_social_jobN_mat <- getSeriesJobYnData_Matrix(jobemp_data, social, jobN)
 printSNAPlot(jobemp_social_jobN_mat, "취업지원-미취업_인문사회계열")
-printSNAPlot2(jobemp_social_jobN_mat, "취업지원-미취업_인문사회계열")
 jobemp_artpsy_jobN_mat <- getSeriesJobYnData_Matrix(jobemp_data, art_psy, jobN)
 printSNAPlot(jobemp_artpsy_jobN_mat, "취업지원-미취업_예체능계열")
-printSNAPlot2(jobemp_artpsy_jobN_mat, "취업지원-미취업_예체능계열")
 jobemp_science_jobN_mat <- getSeriesJobYnData_Matrix(jobemp_data, science, jobN)
 printSNAPlot(jobemp_science_jobN_mat, "취업지원-미취업_자연과학계열")
-printSNAPlot2(jobemp_science_jobN_mat, "취업지원-미취업_자연과학계열")
 ###########################################################################################
