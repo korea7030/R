@@ -7,7 +7,7 @@
 - **20150307_R  ~ 20150613_R** : R 프로그래밍 강의 내용
 - **Art of R Programming Code** : 빅데이터 분석 도구 R 프로그래밍 책 관련 코드
 - **Bucheon_subject1,2,3** : 부천대 데이터 분석 내용
-- **DataMining	** : 데이터마이닝 수업내용
+- **DataMining** : 데이터마이닝 수업내용
 - **EDA** : EDA 수업 내용
 - **Homework** : R프로그래밍 숙제 일부
 - **IGAWORKS** : IGAWORKS 메일 테스트 관련 내용
