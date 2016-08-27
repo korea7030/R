@@ -1,0 +1,286 @@
+
+Call:
+C5.0.formula(formula = churn ~ ., data = train, control = c5_options, rules = FALSE)
+
+
+C5.0 [Release 2.07 GPL Edition]  	Wed May 11 20:41:41 2016
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 3001 cases (115 attributes) from undefined.data
+
+Decision tree:
+
+product_221 > 0: 0 (156/12)
+product_221 <= 0:
+:...product_211 > 0:
+    :...product_951 <= 0:
+    :   :...product_214 > 0: 0 (126/24)
+    :   :   product_214 <= 0:
+    :   :   :...product_623 > 0: 0 (37/5)
+    :   :       product_623 <= 0:
+    :   :       :...product_126 > 0: 0 (26/6)
+    :   :           product_126 <= 0:
+    :   :           :...product_311 > 0:
+    :   :               :...product_312 <= 0: 1 (8/3)
+    :   :               :   product_312 > 0: 0 (10)
+    :   :               product_311 <= 0:
+    :   :               :...product_222 > 0: 0 (24/8)
+    :   :                   product_222 <= 0:
+    :   :                   :...product_210 <= 0:
+    :   :                       :...product_281 <= 0: 1 (171/41)
+    :   :                       :   product_281 > 0:
+    :   :                       :   :...product_492 <= 0: 1 (6/1)
+    :   :                       :       product_492 > 0: 0 (12/3)
+    :   :                       product_210 > 0:
+    :   :                       :...product_125 > 0: 0 (8)
+    :   :                           product_125 <= 0:
+    :   :                           :...product_323 > 0: 0 (4)
+    :   :                               product_323 <= 0:
+    :   :                               :...product_224 <= 0: 1 (19/3)
+    :   :                                   product_224 > 0: 0 (6/1)
+    :   product_951 > 0:
+    :   :...product_226 > 0: 0 (194/10)
+    :       product_226 <= 0:
+    :       :...product_216 > 0: 0 (39/1)
+    :           product_216 <= 0:
+    :           :...product_161 > 0: 0 (59/3)
+    :               product_161 <= 0:
+    :               :...product_522 > 0: 0 (32/1)
+    :                   product_522 <= 0:
+    :                   :...product_122 > 0: 0 (71/8)
+    :                       product_122 <= 0:
+    :                       :...product_284 > 0: 0 (49/6)
+    :                           product_284 <= 0:
+    :                           :...product_214 > 0: 0 (56/9)
+    :                               product_214 <= 0:
+    :                               :...product_621 > 0: 0 (8)
+    :                                   product_621 <= 0:
+    :                                   :...product_115 <= 0:
+    :                                       :...product_163 <= 0: 1 (91/36)
+    :                                       :   product_163 > 0: 0 (20/5)
+    :                                       product_115 > 0:
+    :                                       :...product_213 <= 0: 0 (22/2)
+    :                                           product_213 > 0: 1 (3)
+    product_211 <= 0:
+    :...product_141 > 0: 0 (33/2)
+        product_141 <= 0:
+        :...product_522 > 0:
+            :...product_125 > 0: 0 (55/4)
+            :   product_125 <= 0:
+            :   :...product_122 > 0: 0 (11)
+            :       product_122 <= 0:
+            :       :...product_423 <= 0:
+            :           :...product_421 <= 0: 1 (35/7)
+            :           :   product_421 > 0: 0 (22/6)
+            :           product_423 > 0:
+            :           :...product_813 <= 0: 0 (29/3)
+            :               product_813 > 0: 1 (2)
+            product_522 <= 0:
+            :...product_220 > 0: 0 (49/12)
+                product_220 <= 0:
+                :...product_283 > 0:
+                    :...product_492 > 0: 0 (18/1)
+                    :   product_492 <= 0:
+                    :   :...product_311 <= 0: 1 (7/1)
+                    :       product_311 > 0: 0 (4)
+                    product_283 <= 0:
+                    :...product_123 > 0:
+                        :...product_521 > 0: 0 (9)
+                        :   product_521 <= 0:
+                        :   :...product_216 > 0: 0 (8)
+                        :       product_216 <= 0:
+                        :       :...product_212 > 0: 0 (46/8)
+                        :           product_212 <= 0:
+                        :           :...product_814 > 0: 0 (5)
+                        :               product_814 <= 0:
+                        :               :...product_135 > 0:
+                        :                   :...product_223 <= 0: 0 (18/2)
+                        :                   :   product_223 > 0: 1 (2)
+                        :                   product_135 <= 0:
+                        :                   :...product_120 > 0:
+                        :                       :...product_224 <= 0: 1 (17/6)
+                        :                       :   product_224 > 0: 0 (4)
+                        :                       product_120 <= 0:
+                        :                       :...product_313 <= 0: 1 (36/3)
+                        :                           product_313 > 0: [S1]
+                        product_123 <= 0:
+                        :...product_142 > 0: 0 (37/12)
+                            product_142 <= 0:
+                            :...product_224 > 0:
+                                :...product_120 > 0: 0 (33/4)
+                                :   product_120 <= 0:
+                                :   :...product_210 > 0: 0 (12/2)
+                                :       product_210 <= 0:
+                                :       :...product_421 > 0:
+                                :           :...product_951 > 0: 0 (16/2)
+                                :           :   product_951 <= 0:
+                                :           :   :...product_423 <= 0: 1 (8)
+                                :           :       product_423 > 0: 0 (15/4)
+                                :           product_421 <= 0:
+                                :           :...product_214 > 0: 0 (19/8)
+                                :               product_214 <= 0:
+                                :               :...product_322 <= 0: 1 (48/2)
+                                :                   product_322 > 0: [S2]
+                                product_224 <= 0:
+                                :...product_131 > 0:
+                                    :...product_163 > 0: 0 (14/2)
+                                    :   product_163 <= 0:
+                                    :   :...product_425 <= 0: 1 (28/8)
+                                    :       product_425 > 0: 0 (3)
+                                    product_131 <= 0:
+                                    :...product_621 > 0:
+                                        :...product_951 > 0: 0 (13/3)
+                                        :   product_951 <= 0:
+                                        :   :...product_313 <= 0: 1 (11/1)
+                                        :       product_313 > 0: 0 (3)
+                                        product_621 <= 0:
+                                        :...product_126 > 0:
+                                            :...product_112 > 0: 0 (16/2)
+                                            :   product_112 <= 0:
+                                            :   :...product_124 <= 0: [S3]
+                                            :       product_124 > 0: [S4]
+                                            product_126 <= 0:
+                                            :...product_210 > 0:
+                                                :...product_622 > 0: 0 (6)
+                                                :   product_622 <= 0:
+                                                :   :...product_323 > 0: [S5]
+                                                :       product_323 <= 0: [S6]
+                                                product_210 <= 0:
+                                                :...product_222 <= 0: [S7]
+                                                    product_222 > 0: [S8]
+
+SubTree [S1]
+
+product_113 <= 0: 1 (4/1)
+product_113 > 0: 0 (3)
+
+SubTree [S2]
+
+product_523 <= 0: 1 (24/6)
+product_523 > 0: 0 (3)
+
+SubTree [S3]
+
+product_217 <= 0: 1 (28/3)
+product_217 > 0: 0 (4/1)
+
+SubTree [S4]
+
+product_951 <= 0: 1 (2)
+product_951 > 0: 0 (5)
+
+SubTree [S5]
+
+product_226 <= 0: 0 (9/1)
+product_226 > 0: 1 (2)
+
+SubTree [S6]
+
+product_110 <= 0: 1 (37/5)
+product_110 > 0:
+:...product_218 <= 0: 0 (5)
+    product_218 > 0: 1 (4)
+
+SubTree [S7]
+
+product_120 <= 0: 1 (770/55)
+product_120 > 0:
+:...product_226 > 0: 0 (9/3)
+    product_226 <= 0:
+    :...product_900 <= 0: 1 (69/7)
+        product_900 > 0:
+        :...product_113 <= 0: 0 (3)
+            product_113 > 0: 1 (2)
+
+SubTree [S8]
+
+product_422 > 0: 0 (4)
+product_422 <= 0:
+:...product_322 > 0: 0 (14/5)
+    product_322 <= 0:
+    :...product_124 > 0:
+        :...product_110 <= 0: 1 (2)
+        :   product_110 > 0: 0 (4)
+        product_124 <= 0:
+        :...product_421 > 0: 0 (3/1)
+            product_421 <= 0:
+            :...product_622 <= 0: 1 (40/1)
+                product_622 > 0: 0 (2)
+
+
+Evaluation on training data (3001 cases):
+
+	    Decision Tree   
+	  ----------------  
+	  Size      Errors  
+
+	    87  382(12.7%)   <<
+
+
+	   (a)   (b)    <-classified as
+	  ----  ----
+	  1333   190    (a): class 0
+	   192  1286    (b): class 1
+
+
+	Attribute usage:
+
+	100.00%	product_221
+	 94.80%	product_211
+	 68.74%	product_522
+	 58.11%	product_141
+	 51.88%	product_220
+	 50.25%	product_283
+	 49.28%	product_123
+	 45.18%	product_210
+	 44.52%	product_224
+	 44.45%	product_126
+	 44.22%	product_142
+	 40.35%	product_621
+	 39.12%	product_951
+	 39.05%	product_222
+	 37.05%	product_131
+	 36.49%	product_120
+	 25.02%	product_214
+	 24.59%	product_226
+	 19.76%	product_216
+	 13.96%	product_122
+	 13.70%	product_161
+	 11.03%	product_623
+	  9.30%	product_311
+	  8.30%	product_284
+	  7.83%	product_421
+	  6.36%	product_125
+	  6.30%	product_281
+	  5.20%	product_163
+	  5.06%	product_521
+	  4.67%	product_322
+	  4.53%	product_115
+	  4.50%	product_212
+	  3.70%	product_423
+	  3.50%	product_622
+	  3.00%	product_124
+	  2.97%	product_814
+	  2.87%	product_323
+	  2.80%	product_135
+	  2.47%	product_900
+	  2.30%	product_422
+	  1.90%	product_313
+	  1.83%	product_112
+	  1.73%	product_110
+	  1.57%	product_492
+	  1.07%	product_217
+	  1.03%	product_425
+	  1.03%	product_813
+	  0.90%	product_523
+	  0.83%	product_213
+	  0.67%	product_223
+	  0.60%	product_312
+	  0.40%	product_113
+	  0.30%	product_218
+
+
+Time: 0.3 secs
+

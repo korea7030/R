@@ -50,7 +50,7 @@ plot(xtabs(~cluster+Garden, data=catalog1), main="Garden plot")
 plot(xtabs(~cluster+Gift, data=catalog1), main="Gift plot")
 plot(xtabs(~cluster+Jewelry, data=catalog1), main="Jewelry plot")
 
-### x,y 좌표 표시
+### x,y 좌표 표시(SOM 좌표값으로 나누어지는 군집 확인하고자 그림)
 library(ggplot2)
 catalog1$clusterX <- sm$grid$pts[sm$unit.classif,"x"] # x 값
 catalog1$clusterY <- sm$grid$pts[sm$unit.classif, "y"] # y 값

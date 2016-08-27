@@ -1,0 +1,23 @@
+
+Call:
+svm(formula = churn ~ ., data = train, scale = FALSE)
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  radial 
+       cost:  1 
+      gamma:  0.00877193 
+
+Number of Support Vectors:  1352
+
+ ( 675 677 )
+
+
+Number of Classes:  2 
+
+Levels: 
+ 0 1
+
+
+
